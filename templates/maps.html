@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block stylesheets%}
+    <link rel="stylesheet" type="text/css" href="{% static "css/map-style.css" %}">
+{%endblock stylesheets%}
+
+{% block content%}
+    <script src="{% static "/js/mapInit.js"%}"></script>
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=&v=weekly"
+        async
+    ></script>
+{%endblock%}
