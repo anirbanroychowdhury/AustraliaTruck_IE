@@ -6,19 +6,24 @@
 
 {% block content%}
     
-    <script src="{% static "/js/mapInit.js"%}"></script>
-    <div id="floating-panel">
-      <b>Start: </b>
-        <input type="text" id="start" name="start">
-      <b>End: </b>
-        <input type="text" id="end" name="end">
-    <button><a class="btn btn-primary" href="/">Go Back</a></button>
+<script src="{% static "/js/mapInit.js"%}"></script>
+{% comment %} <button id="custom-map-control-button"></button> {% endcomment %}
+    <div style="display: none">
+        <input
+            id="origin-input"
+            class="controls"
+            type="text"
+            placeholder="Enter an origin location"
+            />
+
+        <input
+            id="destination-input"
+            class="controls"
+            type="text"
+            placeholder="Enter a destination location"
+        />
     </div>
     <div id="map"></div>
-    <div id="infowindow-content">
-        <span id="place-name" class="title"></span><br />
-        <span id="place-address"></span>
-    </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=places&v=weekly"
