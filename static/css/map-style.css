@@ -38,7 +38,19 @@ padding: 0;
       height: 40px;
       font: 400 18px Roboto, Arial, sans-serif;
       overflow: hidden;
-    }
-    .custom-map-control-button:hover {
+}
+.custom-map-control-button:hover {
       background: #ebebeb;
-    }
+}
+
+#infowindow-content .title {
+      font-weight: bold;
+}
+    
+#infowindow-content {
+      display: none;
+}
+    
+#map #infowindow-content {
+      display: inline;
+}

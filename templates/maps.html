@@ -8,16 +8,20 @@
     
     <script src="{% static "/js/mapInit.js"%}"></script>
     <div id="floating-panel">
-    <button><a class="btn btn-primary" href="/">Go Back</a></button>
       <b>Start: </b>
         <input type="text" id="start" name="start">
       <b>End: </b>
         <input type="text" id="end" name="end">
+    <button><a class="btn btn-primary" href="/">Go Back</a></button>
     </div>
     <div id="map"></div>
+    <div id="infowindow-content">
+        <span id="place-name" class="title"></span><br />
+        <span id="place-address"></span>
+    </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=places&v=weekly"
         async
     ></script>
 {%endblock%}

@@ -1,79 +1,101 @@
-let map, infoWindow;
-//Funciton to initalize map
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 function initMap() {
-    //initalize google services
-    const directionsService = new google.maps.DirectionsService();
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-
-    map = new google.maps.Map(document.getElementById("map"), {
-        // Melbounre lat and long
-        center: { lat: -37.8136, lng: 144.9631 },
-        zoom: 10,
-    });
-    infoWindow = new google.maps.InfoWindow();
-    const locationButton = document.createElement("button");
-    locationButton.textContent = "Pan to current location";
-    locationButton.classList.add("custom-map-control-button");
-
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(locationButton);
-    //set map on init
-    directionsRenderer.setMap(map);
-    // call onchange function whenever start and end values change
-    const onChangeHandler = function () {
-        calculateAndDisplayRoute(directionsService, directionsRenderer);
-    };
-
-    //listeners for change event on the input fields
-    document.getElementById("start").addEventListener("change", onChangeHandler);
-    document.getElementById("end").addEventListener("change", onChangeHandler);
-    locationButton.addEventListener("click",getCurrentLocation(map));
-
+  const map = new google.maps.Map(document.getElementById("map"), {
+    mapTypeControl: false,
+    center: { lat: -33.8688, lng: 151.2195 },
+    zoom: 13,
+  });
+  new AutocompleteDirectionsHandler(map);
 }
-//Function to calculate distance between start and end
-function calculateAndDisplayRoute(directionsService, directionsRenderer){
-    //Set route details and settings
-    directionsService.route(
-        {
-            origin: {
-                query: document.getElementById("start").value,
-            },
-            destination: {
-                query: document.getElementById("end").value,
-            },
-            travelMode: google.maps.TravelMode.DRIVING,
-        },
-        // check for response and status
-        (response, status) => {
-            if(status === "OK") {
-                // set the directions
-                directionsRenderer.setDirections(response);
-            } else {
-                window.alert("Direction request failed"+status);
-            }
-        }
+
+class AutocompleteDirectionsHandler {
+  constructor(map) {
+    this.map = map;
+    this.originPlaceId = "";
+    this.destinationPlaceId = "";
+    this.travelMode = google.maps.TravelMode.WALKING;
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.directionsRenderer.setMap(map);
+    const originInput = document.getElementById("origin-input");
+    const destinationInput = document.getElementById("destination-input");
+    const modeSelector = document.getElementById("mode-selector");
+    const originAutocomplete = new google.maps.places.Autocomplete(originInput);
+    // Specify just the place data fields that you need.
+    originAutocomplete.setFields(["place_id"]);
+    const destinationAutocomplete = new google.maps.places.Autocomplete(
+      destinationInput
     );
-}
-//Fetch current location, throw error if permission not granted
-function getCurrentLocation(map){
-    //Check permission
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                // Current location lat & Lng
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
-                //Set position
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location Found");
-                // Set on map
-                infoWindow.open(map);
-                // Center map on location
-                map.setCenter(pos);
-            }, () => {
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        )
+    // Specify just the place data fields that you need.
+    destinationAutocomplete.setFields(["place_id"]);
+    this.setupClickListener(
+      "changemode-walking",
+      google.maps.TravelMode.WALKING
+    );
+    this.setupClickListener(
+      "changemode-transit",
+      google.maps.TravelMode.TRANSIT
+    );
+    this.setupClickListener(
+      "changemode-driving",
+      google.maps.TravelMode.DRIVING
+    );
+    this.setupPlaceChangedListener(originAutocomplete, "ORIG");
+    this.setupPlaceChangedListener(destinationAutocomplete, "DEST");
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(
+      destinationInput
+    );
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+  }
+  // Sets a listener on a radio button to change the filter type on Places
+  // Autocomplete.
+  setupClickListener(id, mode) {
+    const radioButton = document.getElementById(id);
+    radioButton.addEventListener("click", () => {
+      this.travelMode = mode;
+      this.route();
+    });
+  }
+  setupPlaceChangedListener(autocomplete, mode) {
+    autocomplete.bindTo("bounds", this.map);
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+
+      if (!place.place_id) {
+        window.alert("Please select an option from the dropdown list.");
+        return;
+      }
+
+      if (mode === "ORIG") {
+        this.originPlaceId = place.place_id;
+      } else {
+        this.destinationPlaceId = place.place_id;
+      }
+      this.route();
+    });
+  }
+  route() {
+    if (!this.originPlaceId || !this.destinationPlaceId) {
+      return;
     }
+    const me = this;
+    this.directionsService.route(
+      {
+        origin: { placeId: this.originPlaceId },
+        destination: { placeId: this.destinationPlaceId },
+        travelMode: this.travelMode,
+      },
+      (response, status) => {
+        if (status === "OK") {
+          me.directionsRenderer.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
+      }
+    );
+  }
 }
