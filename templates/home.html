@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<img src="{% static "/img/logo/loder.jpg"%}" alt="">
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static "/img/logo/logo.jpg"%}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{% url 'home' %}">Home</a></li>
+                                            <li><a href="{% url 'check_list' %}">Checklist</a></li>
+                                            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+    <main>
+
+        <!-- Hero Area Start-->
+        <div class="slider-area hero-overly">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-8 col-lg-9">
+                            <!-- Hero Caption -->
+                            <div class="hero__caption">
+                                <h1>Plan your routes</h1>
+                                <span>Aus Truck</span>
+
+                                <div class="button-group-area mt-20">
+                                    <a href="route.html" class="genric-btn danger circle arrow">Plan route<span class="lnr lnr-arrow-right"></span></a>
+
+                                </div>
+                        </div>
+                            </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Hero Area End-->
+
+       <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">Project Overview</h2>
+                <p class="sample-text">
+                    AusTruck is a one stop solution for a truck driver. The following proposal is a solution constructed for the truck driving community. Our goal is to involve technology and make it to its full use. The application provides the truck driver with a complete journey plan from source to destination, rules and regulations specific to truck drivers, defensive driving methodologies and a full weather and road condition report to take necessary precautions while driving. <br> <br>
+
+                    The mission of AusTruck is to provide a safe travel plan for the truck driver and thus involves the development of a web application which provides the truck driver a journey plan from source to destination. Lotus blossom chart was developed, comprising sixty-four ideas. After adequate brainstorming sessions, the ideas were narrowed down into one solution which is of utmost importance to our problem statement. Empathy mapping revolving around the prime persona was conducted to understand this. <br> <br>
+
+                    The entire development is divided into three iterations which explains the development progress and eventually leading to the final product. Integrity testing will be conducted at the end of the third iteration to assess the quality of the code. The security aspects are discussed as well as the assumptions/risks are addressed. The data for the project primarily ceased from Open data collection available over the internet. System Architecture diagram was drawn showing all layers of the application. <br> <br>
+
+                    This application could pave way to future projects which could incorporate features such as live counter for stats, defensive driving mechanism etc. which will help truck drivers for a safe drive thus saving their life as well as the others. <br>
+
+
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Area Start -->
+        <div class="services-area pt-150 pb-150 section-bg" data-background="{% static "/img/gallery/truck.jpg"%}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2 text-center mb-80">
+                            <span>Easy to explore</span>
+                            <h2>How It Works</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-list"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">1. Enter destination </a></h5>
+                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            </div>
+                            <!-- Shpape -->
+                            <img class="shape1 d-none d-lg-block" src="{% static "img/icon/serices1.png"%}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-problem"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">2. Plan routes</a></h5>
+                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            </div>
+                            <img class="shape2 d-none d-lg-block" src="{% static "img/icon/serices2.png"%}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-services text-center mb-50">
+                            <div class="services-icon">
+                                <span class="flaticon-respect"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5><a href="#">3. Get the details</a></h5>
+                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- purpose start -->
+        <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">Purpose</h2>
+                <p class="sample-text">
+                    In Australia, 20.5% of the registered vehicles are freight and non-freight trucks which travel an average of millions of kilometres a year. Billions of dollars’ worth freight is transported to keep all kinds of industries from supermarkets to restaurants alive. The trucker’s community is one of the biggest in Australia which have increased significantly over the past five years. Unfortunately, deaths caused by truck accidents average to nearly 200 accidents every year. Unplanned journeys and continuously being behind the wheel for hours is considered to be the main reason for such accidents.
+                    <br><br>One of the biggest reasons for truck accidents in the state of Victoria is due to fatigued drivers. Truckers cannot get their chance to rest during their journey due to several problems regarding rest points. Most of those rest stops are dodgy, unavailability, or occupied which force them to drive without adequate. As Truckers do not get enough rest, they either fall asleep while driving or drive faster.
+                    <br><br>The government has initiative to solve the problem by issuing a project that aims to build a stop station every 80 km, but only 20% of the project has been completed in the greater city region only.
+
+                </p>
+            </div>
+        </section>
+        <!-- purpose end -->
+
+
+        <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">Solution</h2>
+                <p class="sample-text">
+                    Truck drivers tend to fall asleep if they are not provided with enough refreshments during their journey. Hours long of journey could induce mental illness and thus could lead to rash driving to reach the destination sooner.  Truck drivers must be made aware of the rest stops on the way along with other facilities such as service station’s location and if any detour is required due to unforeseen incidents.
+                    <br><br>The proposed solution is to eradicate the fatigue problem which is the main cause of trucks accidents. AusTrcker aims to build a web application that service truck drivers over the age of 21-65 years travelling in Victoria. Prior to the journey, the truck driver enters his source and destination in the application and the website will suggest a travel itinerary for the driver which guarantees rest stops every 12 hours. The website will also be taking inconsideration a number of factors such as, road congestion, weather condition, and road condition.
+                </p>
+            </div>
+        </section>
+
+
+
+        <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">Problem Statement/Challenge</h2>
+                <p class="sample-text">
+                    Truck accidents are increasing at an alarming rate due to dodgy/unavailable rest stops every 80 kilometers in regional Victoria.
+                    Truck drivers are one of the biggest communities in Australia travelling on an average a million kilometers over a year. The unavailability or dodgy rest stops are forcing them to continue being behind the wheel for hours which leads to the increasing road accident rates. This is majorly seen in regional areas where the subsequent stops are 80 kms far from each other. This issue is heavily affecting the trucking industry and the drivers who take the night shift. The Govt of Australia has set up an initiative to have a truck stop every 80km, however only 20% of the project has been completed.
+
+                </p>
+            </div>
+        </section>
+        <!-- Testimonial End -->
+
+        <!-- Subscribe Area Start -->
+        <div class="subscribe-area section-bg pt-150 pb-150" data-background="{% static "img/gallery/section1.jpg"%}">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-8">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle section-tittle2 text-center mb-40">
+                            <span>Subscribe out newslatter</span>
+                            <h2>Subscribe For Newsletter</h2>
+                        </div>
+                        <!--Hero form -->
+                        <form action="#" class="search-box">
+                            <div class="input-form">
+                                <input type="text" placeholder="What are you looking for?">
+                            </div>
+                            <div class="search-form">
+                                <a href="#">Send Now</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Subscribe Area End -->
+
+
+
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Quick Link</h4>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Listing</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Categories</h4>
+                                    <ul>
+                                        <li><a href="#">Reasonable Hotel</a></li>
+                                        <li><a href="#">Popular Restaurant</a></li>
+                                        <li><a href="#">Easy Shopping</a></li>
+                                        <li><a href="#">Night Life</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Download App</h4>
+                                    <ul>
+                                        <li class="app-log"><a href="#"><img src="{% static "/img/gallery/app-logo.png"%}" alt=""></a></li>
+                                        <li><img src="{% static "/img/gallery/app-logo2.png"%}" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-3 col-lg-4">
+                            <!-- Footer Social -->
+                            <div class="footer-social f-right">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+
+{% endblock %}
