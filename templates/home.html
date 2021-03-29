@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<img src="{% static "/img/logo/loder.jpg"%}" alt="">
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -24,7 +23,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2 col-md-1">
                                 <div class="logo">
-                                  <a href="index.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
+                                  <a href="{% url 'home' %}"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-8">
@@ -53,8 +52,8 @@
     <main>
 
         <!-- Hero Area Start-->
-        <div class="slider-area hero-overly">
-            <div class="single-slider hero-overly  slider-height d-flex align-items-center">
+        <div class="slider-area hero-overly" data-background="{% static "/img/hero/h1_hero.jpg"%}">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center" >
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-8 col-lg-9">
