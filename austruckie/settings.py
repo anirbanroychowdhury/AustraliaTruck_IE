@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Created apps
-    'homeapp'
+    'homeapp',
+    'facedetectionapp'
 ]
 
 MIDDLEWARE = [
