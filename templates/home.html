@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
+<!-- Block for stylesheet -->
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
+
+<!-- Block for content -->
 {% block content %}
 <!-- Preloader Start -->
     <div id="preloader-active">
@@ -32,7 +51,7 @@
                                     <nav>
                                         <ul id="navigation">                                                                                                                                     
                                             <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li><a href="/map">Maps</a></li>
                                             <li><a href="catagori.html">Catagories</a></li>
                                             <li><a href="listing.html">Listing</a></li>
                                             <li><a href="#">Page</a>
@@ -248,65 +267,8 @@
         <!-- Categories Area Start -->
         <div class="categories-area section-padding30">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-80">
-                            <span>We are offering for you</span>
-                            <h2>Featured Categories</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-                                <span class="flaticon-bed"></span>
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="catagori.html">Leving Hotel</a></h5>
-                                <p>Must explain your how this keind denoun pleasure</p>
-                                <a href="catagori.html">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-                                <span class="flaticon-drink"></span>
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="catagori.html">Night Life</a></h5>
-                                <p>Must explain your how this keind denoun pleasure</p>
-                                <a href="catagori.html">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-                                <span class="flaticon-home"></span>
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="catagori.html">Culture Place</a></h5>
-                                <p>Must explain your how this keind denoun pleasure</p>
-                                <a href="catagori.html">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-cat text-center mb-50">
-                            <div class="cat-icon">
-                                <span class="flaticon-food"></span>
-                            </div>
-                            <div class="cat-cap">
-                                <h5><a href="catagori.html">Resturent</a></h5>
-                                <p>Must explain your how this keind denoun pleasure</p>
-                                <a href="catagori.html">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
+                {% block map %}
+                {%endblock map%}
             </div>
         </div>
         <!-- Categories Area End -->
@@ -578,4 +540,4 @@
 
 
 
-{% endblock %}
+{% endblock content%}
