@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from homeapp.views import home_view
+from facedetectionapp.views import face_detect_view, video_feed
+
 urlpatterns = [
     path('', home_view, name = 'home'),
+    path('face', face_detect_view, name = 'face'),
+    path('video', video_feed, name = 'face'),
     path('admin/', admin.site.urls),
 ]
