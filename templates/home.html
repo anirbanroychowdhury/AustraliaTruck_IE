@@ -32,6 +32,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="{% url 'home' %}">Home</a></li>
+                                            <li><a href="{% url 'map' %}">Route</a></li>
                                             <li><a href="{% url 'check_list' %}">Checklist</a></li>
                                             <li><a href="{% url 'aboutus' %}">About Us</a></li>
                                         </ul>
@@ -63,7 +64,7 @@
                                 <span>Aus Truck</span>
 
                                 <div class="button-group-area mt-20">
-                                    <a href="route.html" class="genric-btn danger circle arrow">Plan route<span class="lnr lnr-arrow-right"></span></a>
+                                    <a href="{% url 'map' %}" class="genric-btn danger circle arrow">Plan route<span class="lnr lnr-arrow-right"></span></a>
 
                                 </div>
                         </div>
@@ -113,7 +114,7 @@
                             </div>
                             <div class="services-cap">
                                 <h5><a href="#">1. Enter destination </a></h5>
-                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                                <p>Enter the origin location and destination location on the map. </p>
                             </div>
                             <!-- Shpape -->
                             <img class="shape1 d-none d-lg-block" src="{% static "img/icon/serices1.png"%}" alt="">
@@ -126,7 +127,7 @@
                             </div>
                             <div class="services-cap">
                                 <h5><a href="#">2. Plan routes</a></h5>
-                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                                <p>Google map will show the route.</p>
                             </div>
                             <img class="shape2 d-none d-lg-block" src="{% static "img/icon/serices2.png"%}" alt="">
                         </div>
@@ -138,7 +139,7 @@
                             </div>
                             <div class="services-cap">
                                 <h5><a href="#">3. Get the details</a></h5>
-                                <p>incidid labore lore magna aliqua uisipsum suspendis loris.</p>
+                                <p>The details for the rest station, resturant will show on the map.</p>
                             </div>
                         </div>
                     </div>
@@ -224,7 +225,7 @@
                                 <div class="single-footer-caption mb-30">
                                     <!-- logo -->
                                     <div class="footer-logo">
-                                        <a href="index.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
+                                        <a href="landing.html"><img src="{% static "/img/logo/logo.jpg" %}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -235,33 +236,21 @@
                                     <h4>Quick Link</h4>
                                     <ul>
                                         <li><a href="#">Home</a></li>
-                                        <li><a href="#">Listing</a></li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="#">Route</a></li>
+                                        <li><a href="#">Checklist</a></li>
+                                        <li><a href="#">About us</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Categories</h4>
-                                    <ul>
-                                        <li><a href="#">Reasonable Hotel</a></li>
-                                        <li><a href="#">Popular Restaurant</a></li>
-                                        <li><a href="#">Easy Shopping</a></li>
-                                        <li><a href="#">Night Life</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
                                     <h4>Download App</h4>
                                     <ul>
                                         <li class="app-log"><a href="#"><img src="{% static "/img/gallery/app-logo.png"%}" alt=""></a></li>
-                                        <li><img src="{% static "/img/gallery/app-logo2.png"%}" alt=""></a></li>
+                                        <li><a href="#"><img src="{% static "/img/gallery/app-logo2.png"%}" alt=""></a></li>
                                     </ul>
                                 </div>
                             </div>
