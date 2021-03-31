@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.columnTable {
+  float: left;
+  width: 25%;
+  padding: 1 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.rowTable {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.rowTable:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.cardTable {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .columnTable {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/*Reference
+
+https://www.w3schools.com/howto/howto_css_column_cards.asp*/
