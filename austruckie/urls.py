@@ -27,5 +27,5 @@ urlpatterns = [
     path('face', face_detect_view, name = 'face'),
     path('video', video_feed, name = 'face'),
     path('admin/', admin.site.urls),
-    path('access', requestAccess, name="access")
+    path('access', requestAccess, name='access')
 ]
