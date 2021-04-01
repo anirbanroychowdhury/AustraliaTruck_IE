@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <div class="">
+        <form action="/access" method="post">  {% csrf_token %}  {{ form }}
+            <p align="center">Please enter the password to access the website:
+                <br><br>
+                <input id="passIn" type="password" name="passIn" required>
+                <br><br>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </div>
+</body>
+</html>

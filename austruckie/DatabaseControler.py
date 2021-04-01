@@ -11,6 +11,9 @@
 #   2. Use the the return value, if not err, to send your sql either by calling SendSQL or InsertSQL funcions.
 #   3. Cloase the connection if you are done using the CloseConnection function
 
+# Database Paramters
+#   Add the database paramters in the func_ConnectToDB funcion.
+
 import mysql.connector as mysql
 from austruckie.ErrorReporting import ausError as Err
 
