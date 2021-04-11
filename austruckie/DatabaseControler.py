@@ -24,12 +24,13 @@ db_NO_DATA_RESPOND:str = "No Data"
 # Establish Connection to the database
 def func_ConnectToDB():
     # Return: the db connection that can be used to call the other class function OR ErrorReporting object on error
+    # mysql://b89f7ac9ae97e7:12576c53@us-cdbr-east-03.cleardb.com/heroku_2c359834c332ed6?reconnect=true
     try:
         mydb = mysql.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database=""
+        host="us-cdbr-east-03.cleardb.com",
+        user="b89f7ac9ae97e7",
+        password="12576c53",
+        database="heroku_2c359834c332ed6"
         )
         return mydb
     except:
@@ -144,3 +145,12 @@ def func_InsertSQL(Conn, SQLStatment:str, parameters={}, returnID=True):
 
     except:
         return Err(1111, "Database Unknown Error. We are sorry but unexpected error had happened. Please try again")
+
+def func_connectionTest():
+    cnn = func_ConnectToDB()
+    if type(cnn) == Err:
+        cnn.func_PrintError()
+    else:
+        print(cnn)
+
+func_connectionTest()
