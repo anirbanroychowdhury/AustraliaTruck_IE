@@ -16,16 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from homeapp.views import home_view
-from facedetectionapp.views import face_detect_view, video_feed
+from facedetectionapp.views import index_view, video_feed
+from homeapp.views import requestAccess, passwordasking
 
-from homeapp.views import requestAccess
-from homeapp.views import passwordasking
 
 urlpatterns = [
     path('', passwordasking, name = 'start'),
     path('home', home_view, name = 'home'),
-    path('face', face_detect_view, name = 'face'),
-    path('video', video_feed, name = 'face'),
+    path('face', index_view, name = 'camera'),
+    path('video', video_feed, name = 'video'),
     path('admin/', admin.site.urls),
     path('access', requestAccess, name='access')
 ]
