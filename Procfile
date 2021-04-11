@@ -1,1 +1,1 @@
-web: gunicorn tutorial.wsgi --log-file -
+web: gunicorn austruckie.wsgi --log-file -
