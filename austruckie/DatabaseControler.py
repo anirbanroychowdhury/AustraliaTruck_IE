@@ -3,7 +3,7 @@
 #
 # Author: Ali Albahrani
 # Craated Date: 30 March 2021
-# Version: 1.0.0
+# Version: 1.1.0
 # ClassID# 1000
 
 # Class Usage
