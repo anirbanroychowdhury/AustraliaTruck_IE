@@ -1,10 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE HTML>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<body>
-  {% comment %} <div id="container">
-    <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>
-  </div> {% endcomment %}
+
+
+{% block content %}
   <div class="invisible">
     <video id="video" class="hidden">Your browser does not support the video tag.</video>
   </div>
@@ -12,7 +10,9 @@
     <img id="returned-image">
   </div>
 </div>
-</body>
+{% endblock content %}
+
+{% block scripts %}
 <script src="{% static 'js/faceDetection.js' %}"></script>
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
@@ -29,3 +29,6 @@
   };
 </script>
 <script async src="https://huningxin.github.io/opencv.js/build/wasm/opencv.js"></script>
+
+{% endblock scripts %}
+
