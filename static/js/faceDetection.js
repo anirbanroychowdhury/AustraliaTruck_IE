@@ -3,10 +3,9 @@ let videoWidth, videoHeight;
 // whether streaming video from the camera.
 let streaming = false;
 
+//set inital values
 let video = document.getElementById('video');
 let ret_img = document.getElementById('returned-image');
-// let canvasOutput = document.getElementById('canvasOutput');
-// let canvasOutputCtx = canvasOutput.getContext('2d');
 let stream = null;
 
 
@@ -15,7 +14,7 @@ let dstC1 = null;
 let dstC3 = null;
 let dstC4 = null;
 
-
+// start the camnera and keep getting frames
 function startCamera() {
   if (streaming) return;
   navigator.mediaDevices.getUserMedia({video: true, audio: false})
@@ -37,8 +36,6 @@ function startCamera() {
       videoHeight = video.videoHeight;
       video.setAttribute("width", videoWidth);
       video.setAttribute("height", videoHeight);
-      // canvasOutput.width = videoWidth;
-      // canvasOutput.height = videoHeight;
       streaming = true;
     }
     startVideoProcessing();
@@ -52,13 +49,8 @@ function startVideoProcessing() {
   canvasInput.width = videoWidth;
   canvasInput.height = videoHeight;
   canvasInputCtx = canvasInput.getContext('2d');
-  
-  // canvasBuffer = document.createElement('canvas');
-  // canvasBuffer.width = videoWidth;
-  // canvasBuffer.height = videoHeight;
-  // canvasBufferCtx = canvasBuffer.getContext('2d');
-
   canvasInputCtx.drawImage(video,0,0);
+  //request for images to be sent to the api
   let dataURL = canvasInput.toDataURL('image/jpeg');
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/video", true);
@@ -66,7 +58,7 @@ function startVideoProcessing() {
   xhr.onload = response;
   xhr.send(dataURL);
 }
-
+//displaye the received processed images
 function response(e) {
   var imageUrl = 'data:image/bmp;base64,'+this.response
   ret_img.src = imageUrl;
@@ -80,7 +72,7 @@ function stopVideoProcessing() {
 }
 
 
-
+//initiate the camera and subsequent functions
 function opencvIsReady() {
     console.log('OpenCV.js is ready');
     startCamera();

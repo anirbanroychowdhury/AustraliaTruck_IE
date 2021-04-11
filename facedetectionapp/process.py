@@ -1,3 +1,15 @@
+# Name: Process file mian use is for helper functions to detect eyes and drowsiness
+# Main Job: Has helper functions for eye and fatigue detection
+#
+# Author: Anirban Roy Chowdhury
+# Craated Date: 30 March 2021
+# Version: 1.1.0
+# ClassID# 1000
+
+# Class Usage
+#   1. Has helper function for OpenCV
+#   2.returns the jpeg coded frame after processing
+
 import cv2 as cv2
 import dlib
 import base64

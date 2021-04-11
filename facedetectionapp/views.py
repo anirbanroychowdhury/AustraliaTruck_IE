@@ -1,3 +1,15 @@
+# Name: Views for face Detect
+# Main Job: Used to describe views for face detect
+#
+# Author: Anirban Roy Chowdhury
+# Craated Date: 30 March 2021
+# Version: 1.1.0
+# ClassID# 1000
+
+# Class Usage
+#   1. helps return views for face Detection.
+#	2. Gen() creates a stream of images and video_feed displays it
+
 from django.shortcuts import render
 from django.http import StreamingHttpResponse, HttpResponse
 from facedetectionapp.camera import *
@@ -19,22 +31,25 @@ def index_view(request, *args, **kwargs):
 
 def gen(camera):
     """Video streaming generator function."""
-
-    # app.logger.info("starting to generate frames!")
-    print("Starting to generate frames")
     while True:
-        frame = camera.get_frame() #pil_image_to_base64(camera.get_frame())
+		#Get the next frame from queue
+        frame = camera.get_frame()
+		#yeild the frame
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+#Converts the gives file into base64 and enques it into the image queue
 @csrf_exempt
 def video_feed(request, *args, **kwargs):
-    if request.method == 'POST':
-        # print(request.body)
-        _format, _data = str(request.body).split(';base64,')
-        file = ContentFile( base64.b64decode(_data))
-        img = Image.open(file)
-        camera.enqueue_input(img)
-        camera_frame = camera.get_frame()
-        return HttpResponse(camera_frame)
+	#IF request is POST
+	if request.method == 'POST':
+		_format, _data = str(request.body).split(';base64,')
+		#Convert the string into an image
+		file = ContentFile( base64.b64decode(_data))
+		#Open image
+		img = Image.open(file)
+		#Enqueue
+		camera.enqueue_input(img)
+		camera_frame = camera.get_frame()
+		return HttpResponse(camera_frame)
         
