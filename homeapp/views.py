@@ -16,12 +16,20 @@ def passwordasking(request):
 
 # This is a POST handler method that accept in the password and check it
 def requestAccess(request):
+    print("1")
     if request.method == 'POST':
         # The request type is POST, so check the paramters
         if request.POST['passIn'] == 'haddoken':
+            print("2")
             # Password was correct, display the main page
             accessOK = True
             return render(request,"home.html",{})
         else:
             # The password is wornge, or the request is worng, simply rerender the page
             return render(request, "AccessPage.html", {})
+
+def check_list(request, *args, **kwargs):
+    return render(request,"checklist.html",{})
+
+def about_us(request, *args, **kwargs):
+    return render(request,"aboutus.html",{})
