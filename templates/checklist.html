@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
+{% block content %}
+		<!-- CSS here -->
+            
+            {% comment %} <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+            <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+            <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+            <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+            <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+            <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+            <link rel="stylesheet" href="{% static "/css/style.css" %}"> {% endcomment %}
+
+
+    <!-- Preloader Start -->
+<!--    <div id="preloader-active">-->
+<!--        <div class="preloader d-flex align-items-center justify-content-center">-->
+<!--            <div class="preloader-inner position-relative">-->
+<!--                <div class="preloader-circle"></div>-->
+<!--                <div class="preloader-img pere-text">-->
+<!--                    <div class="logo">-->
+<!--                        <a href="index.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; Preloader Start &ndash;&gt;-->
+<!--    <header>-->
+<!--        &lt;!&ndash; Header Start &ndash;&gt;-->
+<!--       <div class="header-area header-transparent">-->
+<!--            <div class="main-header">-->
+<!--               <div class="header-bottom  header-sticky">-->
+<!--                    <div class="container-fluid">-->
+<!--                        <div class="row align-items-center">-->
+<!--                            &lt;!&ndash; Logo &ndash;&gt;-->
+<!--                            <div class="col-xl-2 col-lg-2 col-md-1">-->
+<!--                                <div class="logo">-->
+<!--                                  <a href="landing.html"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-xl-10 col-lg-10 col-md-8">-->
+<!--                                &lt;!&ndash; Main-menu &ndash;&gt;-->
+<!--                                <div class="main-menu f-right d-none d-lg-block">-->
+<!--                                    <nav>-->
+<!--                                        <ul id="navigation">-->
+<!--                                            <li><a href="{% url 'home' %}">Home</a></li>-->
+<!--                                            <li><a href="{% url 'check_list' %}">Checklist</a></li>-->
+<!--                                            <li><a href="{% url 'aboutus' %}">About Us</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </nav>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; Mobile Menu &ndash;&gt;-->
+<!--                            <div class="col-12">-->
+<!--                                <div class="mobile_menu d-block d-lg-none"></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--               </div>-->
+<!--            </div>-->
+<!--       </div>-->
+<!--        &lt;!&ndash; Header End &ndash;&gt;-->
+<!--    </header>-->
+    <main>
+
+        <!-- Hero Start-->
+
+        <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/h2_hero.jpg"%}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center pt-50">
+                            <h2>Maintenance Checklist</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Hero End -->
+        <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">PRE-DEPARTURE SAFETY CHECKS</h2>
+                <p class="sample-text">
+                    It is very important to check your vehicle before you drive, particularly items that have been reported defective. These checks can save time and expense later on, reducing the chance of component failure and subsequent loss of vehicle control, which may result in an accident.
+                    These inspections should be conducted prior to shift start (no matter what the time of day) and always following the manufacturer’s recommendations. The areas you need to cover are listed in this section.
+
+                </p><br><br>
+
+                <div class="section-top-border">
+                    <h3 class="mb-30">Engine Compartment</h3>
+                    <div class="progress-table-wrap">
+                        <div class="progress-table">
+                            <div class="table-head">
+                                <div class="serial">#</div>
+                                <div class="country">checklist</div>
+                                <div class="percentage">Checkbox</div>
+                            </div>
+                            <div class="table-row">
+                                <div class="serial">01</div>
+                                <div class="country"> Energy Oil Level</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">02</div>
+                                <div class="country"> Engine coolant level </div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">03</div>
+                                <div class="country"> Clutch fluid level</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">04</div>
+                                <div class="country"> Brake fluid level</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">05</div>
+                                <div class="country"> Power steering fluid level</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">06</div>
+                                <div class="country"> Screen washer fluid level</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">07</div>
+                                <div class="country"> Ancillary drive belts</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="section-top-border">
+                    <h3 class="mb-30">Wheels and Tyres</h3>
+                    <div class="progress-table-wrap">
+                        <div class="progress-table">
+                            <div class="table-head">
+                                <div class="serial">#</div>
+                                <div class="country">checklist</div>
+                                <div class="percentage">Checkbox</div>
+                            </div>
+                            <div class="table-row">
+                                <div class="serial">01</div>
+                                <div class="country"> Rims</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">02</div>
+                                <div class="country"> Tyres </div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">03</div>
+                                <div class="country"> Tyre inflation correct</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">04</div>
+                                <div class="country"> Tyre cuts, damage, dual tyres touching</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">05</div>
+                                <div class="country"> Spare wheel(s)/tyre(s) </div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-top-border">
+                    <h3 class="mb-30">Vechicle Posture, Leaks and Load</h3>
+                    <div class="progress-table-wrap">
+                        <div class="progress-table">
+                            <div class="table-head">
+                                <div class="serial">#</div>
+                                <div class="country">checklist</div>
+                                <div class="percentage">Checkbox</div>
+                            </div>
+                            <div class="table-row">
+                                <div class="serial">01</div>
+                                <div class="country"> Vehicle posture </div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">02</div>
+                                <div class="country"> Fluid leaks  </div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                            <div class="table-row">
+                                <div class="serial">03</div>
+                                <div class="country"> Load properly secured (trucks)</div>
+                                <div class="percentage">
+                                        <input type="checkbox" id="confirm-checkbox">
+                                        <label for="confirm-checkbox"></label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+ </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="landing.html"><img src="{% static "/img/logo/logo.jpg" %}" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Quick Link</h4>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Route</a></li>
+                                        <li><a href="#">Checklist</a></li>
+                                        <li><a href="#">About us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Download App</h4>
+                                    <ul>
+                                        <li class="app-log"><a href="#"><img src="{% static "/img/gallery/app-logo.png"%}" alt=""></a></li>
+                                        <li><a href="#"><img src="{% static "/img/gallery/app-logo2.png"%}" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-3 col-lg-4">
+                            <!-- Footer Social -->
+                            <div class="footer-social f-right">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+{% endblock %}
