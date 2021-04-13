@@ -13,3 +13,10 @@ CSS3: It is a style sheet language used for describing the presentation of a doc
 JavaScript: It is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It allows our webapp to be dynamic helping us add interactive elements to our webpage. 
 
 OpenCV: It is a library of programming functions mainly aimed at real-time computer vision. Through using the built in functions we can quickly design a lot of the feature extractiona and analysis that is required for this project.
+
+To start the project:
+1. Git clone the project
+2. Install dependencies through <mark>pip install -r requirements.txt</mark>
+3. Change DEBUG=TRUE to run on local machine in settings.py, under folder austruckie
+4. To run django server, use python manage.py runserver.
+5. NOTE: The above command should be run from the root folder of the project where manage.py is located. 
