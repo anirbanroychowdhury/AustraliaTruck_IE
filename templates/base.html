@@ -4,67 +4,30 @@
     <head>  
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Aus Truck</title>
+        <title>Aus Truck </title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static "/img/favicon.ico" %}">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         {%block stylesheets%}
         {%endblock stylesheets%}
-        
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+            <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+            <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+            <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+            <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+            <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+            <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+            <link rel="stylesheet" href="{% static "/css/style.css" %}">
    </head>
 
    <body>
-   <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="{% static "/img/logo/logo.jpg"%}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-       <div class="header-area header-transparent">
-            <div class="main-header">
-               <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                  <a href="{% url 'home' %}"><img src="{% static "/img/logo/logo.jpg"%}" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-md-8">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a href="{% url 'home' %}">Home</a></li>
-                                            <li><a href="/face">Face Detection</a></li>
-                                            <li><a href="{% url 'check_list' %}">Checklist</a></li>
-                                            <li><a href="{% url 'aboutus' %}">About Us</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
-        <!-- Header End -->
-    </header>
     {% block content %}
     {% endblock %}
        <!-- JS here -->
@@ -88,17 +51,18 @@
 		<!-- Nice-select, sticky -->
         <script src="{% static "/js/jquery.nice-select.min.js"%}"></script>
 		<script src="{% static "/js/jquery.sticky.js"%}"></script>
-        
+
         <!-- contact js -->
         <script src="{% static "/js/contact.js"%}"></script>
         <script src="{% static "/js/jquery.form.js"%}"></script>
         <script src="{% static "/js/jquery.validate.min.js"%}"></script>
         <script src="{% static "/js/mail-script.js"%}"></script>
         <script src="{% static "/js/jquery.ajaxchimp.min.js"%}"></script>
-        
-		<!-- Jquery Plugins, main Jquery -->	
+
+		<!-- Jquery Plugins, main Jquery -->
         <script src="{% static "/js/plugins.js"%}"></script>
         <script src="{% static "/js/main.js"%}"></script>
-        {% block scripts %}{% endblock scripts %}
    </body>
+
+
 </html>
