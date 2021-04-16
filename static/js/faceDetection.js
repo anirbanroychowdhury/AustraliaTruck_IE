@@ -61,12 +61,10 @@ function startVideoProcessing() {
 }
 //display the received processed images
 function response(e) {
-  console.log(this.response)
   var imageUrl = 'data:image/bmp;base64,'+this.response.camera_frame
   ret_img.src = imageUrl;
   if (this.response.alarm){
     alarmObject.play();
-    console.log("PLAYINGPLAYINGPLAYINGPLAYINGPLAYING")
   }else{
     alarmObject.pause();
   }

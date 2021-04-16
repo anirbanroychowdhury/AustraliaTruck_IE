@@ -9,6 +9,7 @@
 # Class Usage
 #   1. helps return views for face Detection.
 #	2. Gen() creates a stream of images and video_feed displays it
+#	3. video_feed is a POST API which taken the images from the client side applies the opencv processing and then returns an JSON containing the utf-8 encoded image, and bool value of alarm
 
 from django.shortcuts import render
 from django.http import HttpResponse
