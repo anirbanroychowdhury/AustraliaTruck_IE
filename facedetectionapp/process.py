@@ -66,7 +66,6 @@ class webopencv(object):
         self.lEnd = 48
         self.rStart = 36
         self.rEnd = 42
-        pass
 
     def process(self, img):
         frame = np.array(img)

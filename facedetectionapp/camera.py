@@ -38,7 +38,6 @@ class Camera(object):
     def keep_processing(self):
         while True:
             self.process_one()
-            # sleep(0.01)
 
     #Add an image to the queue
     def enqueue_input(self, input):
