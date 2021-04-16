@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
 {% block content %}
-		<!-- CSS here -->
-
-            {% comment %} <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
-            <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
-            <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
-            <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
-            <link rel="stylesheet" href="{% static "/css/slick.css" %}">
-            <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
-            <link rel="stylesheet" href="{% static "/css/style.css" %}"> {% endcomment %}
 
 <body>
     <!-- Preloader Start -->
@@ -79,13 +80,14 @@
             </div>
         </div>
         <!--Hero End -->
+
         <!-- About Details Start -->
-        <div class="about-details section-padding2">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-md-10">
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle5 mb-80">
+                            <br><br><br>
                             <span>About our project</span>
                             <h2>Making sure that our products can help all truck driver</h2>
                         </div>
@@ -102,49 +104,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+
         <!-- About Details End -->
-        <!-- peoples-visit Start -->
-        <div class="peoples-visit dining-padding-top">
-            <!-- Single Left img -->
-            <div class="single-visit left-img">
-                <div class="container">
-                    <div class="row justify-content-end">
-                        <div class="col-lg-8">
-                            <div class="visit-caption">
-                                <span>We are offering for you</span>
-                                <h3>Helping All truck driver </h3>
-                                <p>Unlike what its name implies, dry cleaning is not actually a 'dry' process. Clothes are soaked in a different solvent.</p>
-                                <!--Single Visit categories -->
-                                <div class="visit-categories mb-40">
-                                    <div class="visit-location">
-                                        <span class="flaticon-travel"></span>
-                                    </div>
-                                    <div class="visit-cap">
-                                        <h4>Plan your routes before go</h4>
-                                        <p>Unlike what its name implies, dry cleaning is not actu  process. Clothes soaked differentent.
-                                        </p>
-                                    </div>
-                                </div>
-                                <!--Single Visit categories -->
-                                <div class="visit-categories">
-                                    <div class="visit-location">
-                                        <span class="flaticon-work"></span>
-                                    </div>
-                                    <div class="visit-cap">
-                                        <h4>Maintenance checklist</h4>
-                                        <p>Unlike what its name implies, dry cleaning is not actu  process. Clothes soaked differentent.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- peoples-visit End -->
-        <!-- Testimonial Start -->
+                <!-- Testimonial Start -->
         <div class="testimonial-area testimonial-padding">
             <div class="container">
                 <div class="row">
@@ -268,6 +230,9 @@
             </div>
         </div>
         <!-- Testimonial End -->
+
+
+
 
 
     </main>
