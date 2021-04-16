@@ -18,6 +18,7 @@ class Camera(object):
     def __init__(self, process):
         self.to_process = []
         self.to_output = []
+        self.to_alarm = []
         self.process = process
         #Create and start a thread when an pbject is initiated
         thread = threading.Thread(target=self.keep_processing, args=())
@@ -29,8 +30,9 @@ class Camera(object):
         if not self.to_process:
             return
         camera_frame = self.to_process.pop(0)
-        output_frame = self.process.process(camera_frame)
-        self.to_output.append(output_frame)
+        result = self.process.process(camera_frame)
+        self.to_output.append(result[0])
+        self.to_alarm.append(result[1])
     
     #keep sending the images
     def keep_processing(self):
@@ -46,4 +48,5 @@ class Camera(object):
     def get_frame(self):
         while not self.to_output:
             sleep(0.01)
-        return self.to_output.pop(0)
+        data = [self.to_output.pop(0),self.to_alarm.pop(0)]
+        return data
