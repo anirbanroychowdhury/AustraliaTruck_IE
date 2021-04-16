@@ -6,6 +6,7 @@ let streaming = false;
 //set inital values
 let video = document.getElementById('video');
 let ret_img = document.getElementById('returned-image');
+let alarmObject = document.getElementById('alarmSound');
 let stream = null;
 
 
@@ -54,14 +55,21 @@ function startVideoProcessing() {
   let dataURL = canvasInput.toDataURL('image/jpeg');
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/video", true);
-  xhr.responseType = "text";
+  xhr.responseType = "json";
   xhr.onload = response;
   xhr.send(dataURL);
 }
-//displaye the received processed images
+//display the received processed images
 function response(e) {
-  var imageUrl = 'data:image/bmp;base64,'+this.response
+  console.log(this.response)
+  var imageUrl = 'data:image/bmp;base64,'+this.response.camera_frame
   ret_img.src = imageUrl;
+  if (this.response.alarm){
+    alarmObject.play();
+    console.log("PLAYINGPLAYINGPLAYINGPLAYINGPLAYING")
+  }else{
+    alarmObject.pause();
+  }
 }
 
 function stopVideoProcessing() {
