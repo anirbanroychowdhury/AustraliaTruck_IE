@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
 {% block content %}
+
+
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -61,8 +76,12 @@
                         <div class="col-xl-8 col-lg-9">
                             <!-- Hero Caption -->
                             <div class="hero__caption">
-                                <h1>Plan your routes</h1>
+                                <h1>Face Detection</h1>
                                 <span>Aus Truck</span>
+                                <div class="button-group-area mt-20">
+                                    <a href="/face" class="genric-btn danger circle arrow">Face Detection<span class="lnr lnr-arrow-right"></span></a>
+
+                                </div>
 
 
                         </div>
@@ -78,16 +97,21 @@
        <section class="sample-text-area">
             <div class="container box_1170">
                 <h2 class="text-heading">Project Overview</h2>
+                <p class="sample-text" >
+                    Fatigued drivers are one of the leading causes of truck accidents in the state of Victoria.
+                    Most times the drivers are unaware of this illness and tend to drive longer with tiredness and eventually dozing off during their journey.
+                    Thus, the problem statement for the project is “Truck drivers, mainly when driving is mostly unaware of their sleep deprivation or tiredness.
+                    This lack of fatigue awareness caused by sleep apnea is causing drivers to doze off.
+                    This results in major truck accidents and is most common across the state”.
+                </p>
+            </div>
+        </section>
+
+        <section class="sample-text-area">
+            <div class="container box_1170">
+                <h2 class="text-heading">Solution</h2>
                 <p class="sample-text">
-                    AusTruck is a one stop solution for a truck driver. The following proposal is a solution constructed for the truck driving community. Our goal is to involve technology and make it to its full use. The application provides the truck driver with a complete journey plan from source to destination, rules and regulations specific to truck drivers, defensive driving methodologies and a full weather and road condition report to take necessary precautions while driving. <br> <br>
-
-                    The mission of AusTruck is to provide a safe travel plan for the truck driver and thus involves the development of a web application which provides the truck driver a journey plan from source to destination. Lotus blossom chart was developed, comprising sixty-four ideas. After adequate brainstorming sessions, the ideas were narrowed down into one solution which is of utmost importance to our problem statement. Empathy mapping revolving around the prime persona was conducted to understand this. <br> <br>
-
-                    The entire development is divided into three iterations which explains the development progress and eventually leading to the final product. Integrity testing will be conducted at the end of the third iteration to assess the quality of the code. The security aspects are discussed as well as the assumptions/risks are addressed. The data for the project primarily ceased from Open data collection available over the internet. System Architecture diagram was drawn showing all layers of the application. <br> <br>
-
-                    This application could pave way to future projects which could incorporate features such as live counter for stats, defensive driving mechanism etc. which will help truck drivers for a safe drive thus saving their life as well as the others. <br>
-
-
+                    The proposed solution is to eradicate the fatigue problem which is the main cause of trucks accidents. AusTrcker aims to build a web application that serves truck drivers between the age of 21-25 and 40-49 who mainly suffer from fatigue due to sleep apnea or lack of physical activity. The application is equipped with an open CV which makes use of the device camera to check the drowsiness rate. Based on the count of blinking and the amount of time the eye lids were closed, the system generates an alarm that would wake the driver up and flash drowsiness alert messages.
                 </p>
             </div>
         </section>
@@ -100,7 +124,7 @@
                         <!-- Section Tittle -->
                         <div class="section-tittle section-tittle2 text-center mb-80">
                             <span>Easy to explore</span>
-                            <h2>How It Works</h2>
+                            <h2>Website Functionalities</h2>
                         </div>
                     </div>
                 </div>
@@ -111,8 +135,8 @@
                                 <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">1. Enter destination </a></h5>
-                                <p>Enter the origin location and destination location on the map. </p>
+                                <h5><a href="#">1. Face Detection </a></h5>
+                                <p>The application is equipped with an open CV which makes use of the device camera to check the drowsiness rate </p>
                             </div>
                             <!-- Shpape -->
                             <img class="shape1 d-none d-lg-block" src="{% static "img/icon/serices1.png"%}" alt="">
@@ -121,11 +145,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="single-services text-center mb-50">
                             <div class="services-icon">
-                                <span class="flaticon-problem"></span>
+                                <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">2. Plan routes</a></h5>
-                                <p>Google map will show the route.</p>
+                                <h5><a href="#">2.Maintenance Checklist </a></h5>
+                                <p>Provide Maintenance Checklist before trip</p>
                             </div>
                             <img class="shape2 d-none d-lg-block" src="{% static "img/icon/serices2.png"%}" alt="">
                         </div>
@@ -133,11 +157,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="single-services text-center mb-50">
                             <div class="services-icon">
-                                <span class="flaticon-respect"></span>
+                                <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">3. Get the details</a></h5>
-                                <p>The details for the rest station, resturant will show on the map.</p>
+                                <h5><a href="#">3. Rule and regulations</a></h5>
+                                <p>Provide Specific Rule and regulations for truck driver</p>
                             </div>
                         </div>
                     </div>
@@ -146,153 +170,16 @@
         </div>
 
 
-         <!-- Stats Cards start -->
-        <div class="about-details section-padding2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-md-10">
-                        <!-- Section Tittle -->
-
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <div class="col-lg-5">
-                <h3>Crashes caused by Fatigue</h3>
-                <p>Within the Southern Region, fatigue crashes accounted for 11% of all crashes between 1996 and
-                    1998. This is higher compared to drink driving crashes Fatigue crashes represent
-                    11% of fatal and injury crashes.</p>
-                    </div>
-                    <div class="col-lg-5">
-                <h3>Fatigue Crashes based on Age.</h3>
-                <p>Driver age groups involved in fatigue related crashes.
-                    Age between 21-25 years has acquired around 35% and 40-49 years around 20% of the age groups.
-                    This descreases as we go above 49 years.</p>
-                    </div>
-                    <div class="col-lg-5">
-                <h3>Driving Hours</h3>
-                <p>On average truck driver spent 71.6 hours per week on driving, loading and maintenance.
-                    Compared to other motorist this is 4 times more. </p>
-            </div>
-            <div class="col-lg-5">
-                <h3>Truck drivers work</h3>
-                <p>Among things they liked least about the job 29.2% Truck drivers put long hours/difficulty
-                    hours as first on the list followed by loading and tax.</p>
-            </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="services-area pt-120 pb-120 section-bg" data-background="{% static "/img/gallery/reststop.gif"%}">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <!-- Section Tittle -->
-<!--                        <div class="section-tittle section-tittle5 mb-80">-->
-<!--                            <span>About our project</span>-->
-<!--                            <h2>Making sure that our products can help all truck driver</h2>-->
-<!--                        </div>-->
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <div class="col-lg-8">
-                        <h3 style="color:white">Rest Stops in Victoria</h3>
-                        <div class='tableauPlaceholder' id='viz1617203208570' style='position: relative'>
-                            <noscript><a href='#'><img alt='Dashboard 1 '
-                                       src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RestStopsinVictoria&#47;Dashboard1&#47;1_rss.png'
-                                       style='border: none'/></a></noscript>
-                            <object class='tableauViz' style='display:none;'>
-                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
-                                <param name='embed_code_version' value='3'/>
-                                <param name='site_root' value=''/>
-                                <param name='name' value='RestStopsinVictoria&#47;Dashboard1'/>
-                                <param name='tabs' value='no'/>
-                                <param name='toolbar' value='yes'/>
-                                <param name='static_image'
-                                       value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Re&#47;RestStopsinVictoria&#47;Dashboard1&#47;1.png'/>
-                                <param name='animate_transition' value='yes'/>
-                                <param name='display_static_image' value='yes'/>
-                                <param name='display_spinner' value='yes'/>
-                                <param name='display_overlay' value='yes'/>
-                                <param name='display_count' value='yes'/>
-                                <param name='language' value='en'/>
-                                <param name='filter' value='publish=yes'/>
-                            </object>
-                        </div>
-                        <script type='text/javascript'>
-                                var divElement = document.getElementById('viz1617203208570');
-                                var vizElement = divElement.getElementsByTagName('object')[0];
-                                if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1200px';
-                                vizElement.style.height='427px';} else if ( divElement.offsetWidth > 500 )
-                                { vizElement.style.width='1200px';vizElement.style.height='427px';}
-                                else { vizElement.style.width='100%';vizElement.style.height='727px';}
-                                var scriptElement = document.createElement('script');
-                                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-                                vizElement.parentNode.insertBefore(scriptElement, vizElement);
-</script>
-                        <p style="color:white">As you can see there are a lot of rest stops which do not have truck access and even
-                            if there are some a lot of them do not have truck parking.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
-         <!-- Stats Cards end -->
-         <!-- purpose start -->
-        <section class="sample-text-area">
-            <div class="container box_1170">
-                <h2 class="text-heading">Purpose</h2>
-                <p class="sample-text">
-                    In Australia, 20.5% of the registered vehicles are freight and non-freight trucks which travel an average of millions of kilometres a year. Billions of dollars’ worth freight is transported to keep all kinds of industries from supermarkets to restaurants alive. The trucker’s community is one of the biggest in Australia which have increased significantly over the past five years. Unfortunately, deaths caused by truck accidents average to nearly 200 accidents every year. Unplanned journeys and continuously being behind the wheel for hours is considered to be the main reason for such accidents.
-                    <br><br>One of the biggest reasons for truck accidents in the state of Victoria is due to fatigued drivers. Truckers cannot get their chance to rest during their journey due to several problems regarding rest points. Most of those rest stops are dodgy, unavailability, or occupied which force them to drive without adequate. As Truckers do not get enough rest, they either fall asleep while driving or drive faster.
-                    <br><br>The government has initiative to solve the problem by issuing a project that aims to build a stop station every 80 km, but only 20% of the project has been completed in the greater city region only.
 
-                </p>
-            </div>
-        </section>
-        <!-- purpose end -->
-
-
-        <section class="sample-text-area">
-            <div class="container box_1170">
-                <h2 class="text-heading">Solution</h2>
-                <p class="sample-text">
-                    Truck drivers tend to fall asleep if they are not provided with enough refreshments during their journey. Hours long of journey could induce mental illness and thus could lead to rash driving to reach the destination sooner.  Truck drivers must be made aware of the rest stops on the way along with other facilities such as service station’s location and if any detour is required due to unforeseen incidents.
-                    <br><br>The proposed solution is to eradicate the fatigue problem which is the main cause of trucks accidents. AusTrcker aims to build a web application that service truck drivers over the age of 21-65 years travelling in Victoria. Prior to the journey, the truck driver enters his source and destination in the application and the website will suggest a travel itinerary for the driver which guarantees rest stops every 12 hours. The website will also be taking inconsideration a number of factors such as, road congestion, weather condition, and road condition.
-                </p>
-            </div>
-        </section>
 
 
 
 
         <!-- Testimonial End -->
 
-        <!-- Subscribe Area Start -->
-        <div class="subscribe-area section-bg pt-150 pb-150" data-background="{% static "img/gallery/section1.jpg"%}">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-8">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle section-tittle2 text-center mb-40">
-                            <span>Subscribe out newslatter</span>
-                            <h2>Subscribe For Newsletter</h2>
-                        </div>
-                        <!--Hero form -->
-                        <form action="#" class="search-box">
-                            <div class="input-form">
-                                <input type="text" placeholder="What are you looking for?">
-                            </div>
-                            <div class="search-form">
-                                <a href="#">Send Now</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Subscribe Area End -->
+
 </main>
 
 <footer>

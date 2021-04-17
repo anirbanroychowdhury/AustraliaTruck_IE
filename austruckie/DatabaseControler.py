@@ -3,7 +3,7 @@
 #
 # Author: Ali Albahrani
 # Craated Date: 30 March 2021
-# Version: 1.1.0
+# Version: 1.2.0
 # ClassID# 1000
 
 # Class Usage
@@ -16,6 +16,8 @@
 
 import mysql.connector as mysql
 from austruckie.ErrorReporting import ausError as Err
+
+import os
 
 # Those constent will be return by the function. You can use them to check the respond of the class's funcions
 db_OK_RESPOND:str = "OK"
@@ -146,11 +148,108 @@ def func_InsertSQL(Conn, SQLStatment:str, parameters={}, returnID=True):
     except:
         return Err(1111, "Database Unknown Error. We are sorry but unexpected error had happened. Please try again")
 
-def func_connectionTest():
+# ---------------------------------------------------------------------------------------------------------------------
+
+# This function can be used to create the database from scratch and can be used as well to recreate
+# CAUTION: ALL DATA IN DATABASE WILL BE ERASED IF THIS FUNCTION IS USED
+# NOTE: COMMIT; statment must be shown at the end of the file once only
+def func_CreateDatabase(sqlFileName="austruck.sql"):
+
+    #   -----------------------------------
+    # parameters:
+    #   sqlFileName: The SQL file that will be used to create the database.
+    #   -----------------------------------
+    # Return:
+    #   N/A
+
+    print("Trying to connect to the database ... ")
+    # Esstablish the connection to database
     cnn = func_ConnectToDB()
     if type(cnn) == Err:
         cnn.func_PrintError()
-    else:
-        print(cnn)
+        return
+    print("Connection Established")
+    print("*"*10)
 
-func_connectionTest()
+    # Check for the SQL file
+    if os.path.isfile(sqlFileName):
+        # File is there, start reading
+        sqlFileHandler = open(sqlFileName, "r")
+
+        # Read one line
+        oneline = sqlFileHandler.readline()
+
+        # Var to hanld one SQL statment of the file
+        theSql = ""
+
+        # Start reading the full file
+        while oneline != None:
+
+            # Splite the read file inot words
+            onelineWords = oneline.split(" ")
+
+            # Check if the first word in the line is interesting and act accordingly
+            if onelineWords[0] == "DROP" or onelineWords[0] == "CREATE" or \
+                    onelineWords[0] == "INSERT":
+
+                # Add the line to the final SQL statement as one SQL statement contain a number of lines
+                theSql = theSql + oneline
+
+                # Check if the statement is complete
+                if oneline.find(";")==-1:
+                    # Not completed, next lines in the file should complete it
+                    oneline = sqlFileHandler.readline()
+
+                    # Read lines until the ";" sample is found
+                    while oneline.find(";")==-1 or oneline != None:
+                        # Add the new line to the final statement
+                        theSql = theSql + oneline
+                        # read the next line
+                        oneline = sqlFileHandler.readline()
+
+                    # The ";" was found as the while loop stopped, add the line to the statement
+                    theSql = theSql + oneline
+
+                ################################
+                #   SQL statement is ready
+                ################################
+                print("---------- START ------------------ ")
+                print("Running:", theSql)
+
+                # Try to run the sql statment
+                r = func_SendSQL(myDBin=cnn,SQLStatment=theSql, returnDate=False)
+                # Check the result
+                if type(r) is Err:
+                    # Error was found, printint out and exit the function
+                    r.func_PrintError()
+                    return " ------- FINISH ------- "
+                else:
+                    # No errors
+                    print("  Run Succssfully \n")
+
+                # Prepare for the next iteration
+                theSql = ""
+
+            elif onelineWords[0] == "--":
+                # Comment line, simply ignore
+                pass
+
+            elif onelineWords[0] == "COMMIT;":
+                # Reach the end of file, break the while loop
+                break
+
+            # Read the next line in the file ( Normally this will start after running one SQL statement )
+            oneline = sqlFileHandler.readline()
+
+    else:
+        return Err(1010, "SQL file(", sqlFileName, ") which should be used to create the database was not found or corrupted. The database cannot be created.","please check the file and try again")
+
+def func_displayDatabase():
+    cn = func_ConnectToDB()
+    tablesNames = func_SendSQL(cn, "SELECT table_name FROM information_schema.tables WHERE table_schema = 'heroku_2c359834c332ed6'")
+    for oneTable in tablesNames:
+        temp = str(oneTable)
+        temp = temp[2:len(temp)-3]
+        print("Table (", temp, ")")
+        print(func_SendSQL(cn, "SELECT * FROM " + temp))
+        print("---------------------------------------------")

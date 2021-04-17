@@ -9,16 +9,16 @@
 # Class Usage
 #   1. helps return views for face Detection.
 #	2. Gen() creates a stream of images and video_feed displays it
+#	3. video_feed is a POST API which taken the images from the client side applies the opencv processing and then returns an JSON containing the utf-8 encoded image, and bool value of alarm
 
 from django.shortcuts import render
-from django.http import StreamingHttpResponse, HttpResponse
+from django.http import HttpResponse
 from facedetectionapp.camera import *
 from facedetectionapp.process import *
 from django.views.decorators.csrf import csrf_exempt
 from PIL import Image
-import time
+import json
 from django.core.files.base import ContentFile
-import io
 
 camera = Camera(webopencv())
 
@@ -51,5 +51,6 @@ def video_feed(request, *args, **kwargs):
 		#Enqueue
 		camera.enqueue_input(img)
 		camera_frame = camera.get_frame()
-		return HttpResponse(camera_frame)
+		data = {'camera_frame':camera_frame[0],'alarm':camera_frame[1]}
+		return HttpResponse(json.dumps(data),content_type='application/json')
         

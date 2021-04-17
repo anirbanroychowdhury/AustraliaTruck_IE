@@ -4,31 +4,20 @@
     <head>  
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Aus Truck </title>
+        <title>Aus Truck</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static "/img/favicon.ico" %}">
+
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
         {%block stylesheets%}
-        <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
-            <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
-            <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
-            <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
-            <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
-            <link rel="stylesheet" href="{% static "/css/slick.css" %}">
-            <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
-            <link rel="stylesheet" href="{% static "/css/style.css" %}">
         {%endblock stylesheets%}
-
-		<!-- CSS here -->
 
    </head>
 
    <body>
+
     {% block content %}
     {% endblock %}
        <!-- JS here -->
@@ -63,8 +52,6 @@
 		<!-- Jquery Plugins, main Jquery -->
         <script src="{% static "/js/plugins.js"%}"></script>
         <script src="{% static "/js/main.js"%}"></script>
-    {% block scripts %}{% endblock scripts %}
+        {% block scripts %}{% endblock scripts %}
    </body>
-
-
 </html>
