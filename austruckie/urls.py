@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from facedetectionapp.views import index_view, video_feed
-from homeapp.views import home_view, requestAccess, passwordasking, check_list, about_us
+from homeapp.views import home_view, requestAccess, passwordasking, check_list, about_us, rules
 
 
 
@@ -28,5 +28,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('checklist', check_list, name='check_list'),
     path('aboutus', about_us, name = 'aboutus'),
+    path('rules', rules, name = 'rules'),
     path('access', requestAccess, name='access')
 ]
