@@ -68,11 +68,17 @@ class webopencv(object):
         self.rEnd = 42
 
     def process(self, img):
+        #Get frame in np array
         frame = np.array(img)
+        #Convert to gray 
         grayFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        #Detect faces
         faces = self.detector(grayFrame,0)
+        #for each face
         for face in faces:
+            #predict face in image
             shape = self.predictor(grayFrame,face)
+            #change shape
             shape = shape_to_np(shape)
             #Extract left and right eye using defined coordinates
             leftEye = shape[self.lStart:self.lEnd]
@@ -90,7 +96,6 @@ class webopencv(object):
             cv2.drawContours(frame,[rightEyeHull], -1, (0,255,0), 1)
             if avgEAR < self.EYE_AR_THRESH:
                 self.COUNTER += 1
-                print(self.COUNTER)
                 if self.COUNTER >= self.EYE_AR_CONSEC_FRAMES:
                     if not self.ALARM_ON:
                         self.ALARM_ON = True
