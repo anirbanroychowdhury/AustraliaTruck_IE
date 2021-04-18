@@ -8,35 +8,26 @@
 
 # Class Usage
 #   1. helps return views for face Detection.
-#	2. Gen() creates a stream of images and video_feed displays it
+#	2. video_feed is a POST API which taken the images from the client side applies the opencv processing and then returns an JSON containing the utf-8 encoded image, and bool value of alarm
 
 from django.shortcuts import render
-from django.http import StreamingHttpResponse, HttpResponse
+from django.http import HttpResponse
 from facedetectionapp.camera import *
 from facedetectionapp.process import *
 from django.views.decorators.csrf import csrf_exempt
 from PIL import Image
-import time
+import json
 from django.core.files.base import ContentFile
-import io
 
+#Get user camera through javascript
+# webopencv() function to initialize class from process
 camera = Camera(webopencv())
 
 
 def index_view(request, *args, **kwargs):
     """Video streaming home page."""
- 
-    return render(request,'faceDetect.html',{'image':""})
+    return render(request,'faceDetect.html',{})
 
-
-def gen(camera):
-    """Video streaming generator function."""
-    while True:
-		#Get the next frame from queue
-        frame = camera.get_frame()
-		#yeild the frame
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 #Converts the gives file into base64 and enques it into the image queue
 @csrf_exempt
@@ -50,6 +41,10 @@ def video_feed(request, *args, **kwargs):
 		img = Image.open(file)
 		#Enqueue
 		camera.enqueue_input(img)
-		camera_frame = camera.get_frame()
-		return HttpResponse(camera_frame)
+		#Get processed image
+		processedResult = camera.get_frame()
+		#Create dict for response
+		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
+		#Convert to Json and send response
+		return HttpResponse(json.dumps(res),content_type='application/json')
         
