@@ -3,7 +3,7 @@
 #
 # Author: Ali Albahrani
 # Craated Date: 30 March 2021
-# Version: 1.2.0
+# Version: 1.2.1
 # ClassID# 1000
 
 # Class Usage
@@ -201,7 +201,7 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
                     oneline = sqlFileHandler.readline()
 
                     # Read lines until the ";" sample is found
-                    while oneline.find(";")==-1 or oneline != None:
+                    while oneline.find(";")==-1:
                         # Add the new line to the final statement
                         theSql = theSql + oneline
                         # read the next line
@@ -234,9 +234,10 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
                 # Comment line, simply ignore
                 pass
 
-            elif onelineWords[0] == "COMMIT;":
+            elif "COMMIT;" in onelineWords[0]:
                 # Reach the end of file, break the while loop
-                break
+                print("-"*5, "FILE END", "-"*5)
+                return
 
             # Read the next line in the file ( Normally this will start after running one SQL statement )
             oneline = sqlFileHandler.readline()
@@ -251,5 +252,9 @@ def func_displayDatabase():
         temp = str(oneTable)
         temp = temp[2:len(temp)-3]
         print("Table (", temp, ")")
-        print(func_SendSQL(cn, "SELECT * FROM " + temp))
+        d = func_SendSQL(myDBin=cn, SQLStatment="SELECT * FROM " + temp)
+        if type(d) is Err:
+            d.func_PrintError()
+        else:
+            print(d)
         print("---------------------------------------------")
