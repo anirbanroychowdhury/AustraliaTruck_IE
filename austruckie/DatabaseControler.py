@@ -174,7 +174,7 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
     # Check for the SQL file
     if os.path.isfile(sqlFileName):
         # File is there, start reading
-        sqlFileHandler = open(sqlFileName, "r")
+        sqlFileHandler = open(sqlFileName, "r", encoding="utf8")
 
         # Read one line
         oneline = sqlFileHandler.readline()
@@ -243,7 +243,7 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
             oneline = sqlFileHandler.readline()
 
     else:
-        return Err(1010, "SQL file(", sqlFileName, ") which should be used to create the database was not found or corrupted. The database cannot be created.","please check the file and try again")
+        return Err(1010, "SQL file(" + sqlFileName + ") which should be used to create the database was not found or corrupted. The database cannot be created.","please check the file and try again")
 
 def func_displayDatabase():
     cn = func_ConnectToDB()
