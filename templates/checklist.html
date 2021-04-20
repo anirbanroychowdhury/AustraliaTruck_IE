@@ -14,8 +14,236 @@
     <link rel="stylesheet" href="{% static "/css/slick.css" %}">
     <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
     <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "/css/checklist.css" %}">
+
+<style>
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.map {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  background-color: #ccc;
+}
+.map img {
+  display: block;
+  width: 100%;
+}
+
+.map-popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 99;
+  width: 80%;
+  padding: 2rem;
+  background-color: #fff;
+  transition: all 300ms ease-in;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 24px rgba(0,0,0,0.22);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.map-popup > *:first-child { margin-top: 0; }
+.map-popup > *:last-child { margin-bottom: 0; }
+
+.map-popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.marker {
+  position: absolute;
+  z-index: 1;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  background-color: tomato;
+  transition: all 300ms;
+}
+
+.marker1 {
+  top: 70%;
+  left: 80%;
+}
+.marker2 {
+  top: 60%;
+  left: 64%;
+}
+
+.marker3 {
+  top: 80%;
+  left: 51%;
+}
+
+.marker4 {
+  top: 40%;
+  left: 20%;
+}
+
+.marker5 {
+  top: 45%;
+  left: 32%;
+}
+
+@media only screen and (min-width:48em) {
+  .map-item {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    }
+    .map-item .marker {
+      top: auto;
+      left: auto;
+    }
+
+  .map-item1 {
+    top: 70%;
+    left: 80%;
+  }
+  .map-item2 {
+    top: 60%;
+    left: 64%;
+  }
+
+  .map-item3 {
+  top: 80%;
+  left: 51%;
+}
+
+  .map-item4 {
+  top: 40%;
+  left: 20%;
+}
+
+  .map-item5 {
+  top: 45%;
+  left: 32%;
+}
+
+  .map-popup {
+    position: absolute;
+    left: 58px;
+    width: 280px;
+    transform: translateY(-50%);
+  }
+  .map-popup:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    margin-top: -16px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 16px 16px 16px 0;
+    border-color: transparent #fff transparent transparent;
+  }
+
+  .map-popup.edge {
+    left: auto;
+    right: calc(100% + 24px);
+  }
+  .map-popup.edge:before {
+    left: auto;
+    right: -16px;
+    border-width: 16px 0 16px 16px;
+    border-color: transparent transparent transparent #fff;
+  }
+}
+
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+
+</style>
+
 {%endblock stylesheets%}
+
+
+
+
 {% block content %}
+
+
 
     <!-- Preloader Start -->
     <div id="preloader-active">
@@ -85,6 +313,11 @@
         </div>
 
         <!--Hero End -->
+
+
+
+
+
         <section class="sample-text-area">
             <div class="container box_1170">
                 <h2 class="text-heading">PRE-DEPARTURE SAFETY CHECKS</h2>
@@ -93,185 +326,188 @@
                     These inspections should be conducted prior to shift start (no matter what the time of day) and always following the manufacturer’s recommendations. The areas you need to cover are listed in this section.
 
                 </p><br><br>
-
-                <div class="section-top-border">
-                    <h3 class="mb-30">Engine Compartment</h3>
-                    <div class="progress-table-wrap">
-                        <div class="progress-table">
-                            <div class="table-head">
-                                <div class="serial">#</div>
-                                <div class="country">checklist</div>
-                                <div class="percentage">Checkbox</div>
-                            </div>
-                            <div class="table-row">
-                                <div class="serial">01</div>
-                                <div class="country"> Energy Oil Level</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">02</div>
-                                <div class="country"> Engine coolant level </div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">03</div>
-                                <div class="country"> Clutch fluid level</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">04</div>
-                                <div class="country"> Brake fluid level</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">05</div>
-                                <div class="country"> Power steering fluid level</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">06</div>
-                                <div class="country"> Screen washer fluid level</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">07</div>
-                                <div class="country"> Ancillary drive belts</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="section-top-border">
-                    <h3 class="mb-30">Wheels and Tyres</h3>
-                    <div class="progress-table-wrap">
-                        <div class="progress-table">
-                            <div class="table-head">
-                                <div class="serial">#</div>
-                                <div class="country">checklist</div>
-                                <div class="percentage">Checkbox</div>
-                            </div>
-                            <div class="table-row">
-                                <div class="serial">01</div>
-                                <div class="country"> Rims</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">02</div>
-                                <div class="country"> Tyres </div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">03</div>
-                                <div class="country"> Tyre inflation correct</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">04</div>
-                                <div class="country"> Tyre cuts, damage, dual tyres touching</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">05</div>
-                                <div class="country"> Spare wheel(s)/tyre(s) </div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-top-border">
-                    <h3 class="mb-30">Vechicle Posture, Leaks and Load</h3>
-                    <div class="progress-table-wrap">
-                        <div class="progress-table">
-                            <div class="table-head">
-                                <div class="serial">#</div>
-                                <div class="country">checklist</div>
-                                <div class="percentage">Checkbox</div>
-                            </div>
-                            <div class="table-row">
-                                <div class="serial">01</div>
-                                <div class="country"> Vehicle posture </div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">02</div>
-                                <div class="country"> Fluid leaks  </div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                            <div class="table-row">
-                                <div class="serial">03</div>
-                                <div class="country"> Load properly secured (trucks)</div>
-                                <div class="percentage">
-                                        <input type="checkbox" id="confirm-checkbox">
-                                        <label for="confirm-checkbox"></label>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </section>
+
+        <div class="map">
+
+              <div class="map-item map-item1">
+                <a class="marker marker1" href="#marker1">Engine</a>
+
+                <aside id="marker1" class="map-popup">
+                  <h3 class="popup-title">Engine Compartment</h3>
+                    <br>
+                    <label class="container">Energy Oil Level
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Engine Coolant Level
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Clutch Fluid Level
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Brake Fluid Level
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Power Steering Fluid Level
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Screen Washer Fluid Level
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Ancillary Drive Belts
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                </aside>
+                  </div>
+
+
+              <div class="map-item map-item2">
+                <a class="marker marker2" href="#marker2">Light</a>
+
+                <aside id="marker2" class="map-popup">
+                  <h3 class="popup-title">Light Compartment</h3>
+                    <br>
+                    <label class="container">Indicators Lights
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Driving and Fog Lights
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Park Lights
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Clearance Light
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Brake Light
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Hazard Light
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Tail Lights
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+                </aside>
+              </div>
+
+            <div class="map-item map-item3">
+                <a class="marker marker3" href="#marker3">Tyre</a>
+
+                <aside id="marker3" class="map-popup">
+                  <h3 class="popup-title">Light Compartment</h3>
+                    <br>
+                    <label class="container">Tyre Pressure
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Tyre Damage
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Rims Damage
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Spare Wheel/Tyre
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                </aside>
+              </div>
+
+
+            <div class="map-item map-item4">
+                <a class="marker marker3" href="#marker3">Body</a>
+
+                <aside id="marker4" class="map-popup">
+                  <h3 class="popup-title">Body Compartment</h3>
+                    <br>
+                    <label class="container">Body Damage
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Fluid Leaks
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Load properly secured
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Fuel Tanks
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                </aside>
+              </div>
+
+
+            <div class="map-item map-item5">
+                <a class="marker marker5" href="#marker5">Towing</a>
+
+                <aside id="marker5" class="map-popup">
+                  <h3 class="popup-title">Towing Compartment</h3>
+                    <br>
+                    <label class="container">Air hoses and cables
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Pin couplings
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Towing Attachments
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">Security
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                    </label>
+
+                </aside>
+              </div>
+
+              <img src="{% static "img/gallery/truck_map.jpeg"%}" usemap="#image-map", alt="">
+            </div>
+        <br><br><br><br><br><br>
+
+
+
+
  </main>
     <footer>
         <!-- Footer Start-->
@@ -339,5 +575,34 @@
     </div>
 
 {% endblock %}
+{% block scripts %}
+<script>
+jQuery(function($) {
+  var pop = $('.map-popup');
+  pop.click(function(e) {
+    e.stopPropagation();
+  });
+
+  $('a.marker').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(this).next('.map-popup').toggleClass('open');
+    $(this).parent().siblings().children('.map-popup').removeClass('open');
+  });
+
+  $(document).click(function() {
+    pop.removeClass('open');
+  });
+
+  pop.each(function() {
+    var w = $(window).outerWidth(),
+        edge = Math.round( ($(this).offset().left) + ($(this).outerWidth()) );
+    if( w < edge ) {
+      $(this).addClass('edge');
+    }
+  });
+});
+</script>
+{% endblock scripts %}
 
 
