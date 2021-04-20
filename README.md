@@ -15,8 +15,12 @@ JavaScript: It is a programming language that conforms to the ECMAScript specifi
 OpenCV: It is a library of programming functions mainly aimed at real-time computer vision. Through using the built in functions we can quickly design a lot of the feature extractiona and analysis that is required for this project.
 
 To start the project:
-1. Git clone the project
-2. Install dependencies through <mark>pip install -r requirements.txt</mark>
-3. Change DEBUG=TRUE to run on local machine in settings.py, under folder austruckie
-4. To run django server, use python manage.py runserver.
+1. Open Powershell terminal.
+1. Git clone the project through powershell. command - git pull origin master
+2. Install dependencies through <mark>pip install -rq requirements.txt</mark> through powershell.
+3. Change DEBUG=TRUE to run on local machine in settings.py, under folder austruckie.
+4. To run django server, use python manage.py runserver on terminal.
 5. NOTE: The above command should be run from the root folder of the project where manage.py is located. 
+
+IDE Required: Visual Studio Code, PyCharm, etc - anyone will work
+Terminal : Powershell or IDE one. 

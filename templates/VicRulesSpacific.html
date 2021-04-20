@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
+{% block content %}
+
+
+    <main>
+        <!-- Hero Start-->
+        <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/h2_hero.jpg"%}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center pt-50">
+                            <h2>Trucks releted road rules and regulation in Victoria</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero End -->
+
+        <!-- Start -->
+
+        <!-- Rules Listing -->
+        <div class="container box_1170">
+            <p class="sample-text">
+                <h3>Spasifc rules</h3>
+                <ol>
+                    {% for oneSType in SpasficRules %}
+                    <li>{{oneSType|safe}}</li>
+                    <br>
+                    {% endfor %}
+                </ol>
+            </p>
+        </div>
+
+                <!-- Rules Listing -->
+        <div class="container box_1170">
+            <p class="sample-text">
+                <h3>Generac rules</h3>
+
+                <ol>
+                    {% for oneRule in NormalRules %}
+                    <li>{{oneRule|safe}}</li>
+                    <br>
+                    {% endfor %}
+                </ol>
+            </p>
+        </div>
+
+    </main>
+
+
+{% endblock %}
