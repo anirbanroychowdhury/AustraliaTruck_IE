@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center pt-50">
-                            <h2>Trucks releted road rules and regulation in Victory</h2>
+                            <h2>Trucks releted road rules and regulation in Victoria</h2>
                         </div>
                     </div>
                 </div>
@@ -72,18 +72,10 @@
         <!-- Rules Listing -->
         <div class="container box_1170">
             <p class="sample-text">
-                <h3>Spasifc rules</h3>
-                <ol>
-                    {% for oneType in SpasficRules %}
-                    <li>{{oneType|safe}}</li>
-                    <br>
-                    {% endfor %}
-                </ol>
-
                 <h3>General Rule for all trucks drivers:</h3>
                 <ol>
-                    {% for oneSType in RuleList %}
-                    <li>{{oneSType|safe}}</li>
+                    {% for oneRule in RuleList %}
+                    <li>{{oneRule|safe}}</li>
                     <br>
                     {% endfor %}
                 </ol>

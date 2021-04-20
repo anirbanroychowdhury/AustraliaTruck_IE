@@ -3,7 +3,7 @@
 #
 # Author: Ali Albahrani
 # Craated Date: 30 March 2021
-# Version: 1.2.1
+# Version: 1.3.0
 # ClassID# 1000
 
 # Class Usage
@@ -146,7 +146,7 @@ def func_InsertSQL(Conn, SQLStatment:str, parameters={}, returnID=True):
         return err
 
     except:
-        return Err(1111, "Database Unknown Error. We are sorry but unexpected error had happened. Please try again")
+        return Err(1111, "Database Unknown Error.", "We are sorry but unexpected error had happened. Please try again")
 
 # ---------------------------------------------------------------------------------------------------------------------
 
@@ -174,7 +174,7 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
     # Check for the SQL file
     if os.path.isfile(sqlFileName):
         # File is there, start reading
-        sqlFileHandler = open(sqlFileName, "r")
+        sqlFileHandler = open(sqlFileName, "r", encoding="utf8")
 
         # Read one line
         oneline = sqlFileHandler.readline()
@@ -243,7 +243,7 @@ def func_CreateDatabase(sqlFileName="austruck.sql"):
             oneline = sqlFileHandler.readline()
 
     else:
-        return Err(1010, "SQL file(", sqlFileName, ") which should be used to create the database was not found or corrupted. The database cannot be created.","please check the file and try again")
+        return Err(1010, "SQL file(" + sqlFileName + ") which should be used to create the database was not found or corrupted. The database cannot be created.","please check the file and try again")
 
 def func_displayDatabase():
     cn = func_ConnectToDB()
@@ -258,3 +258,31 @@ def func_displayDatabase():
         else:
             print(d)
         print("---------------------------------------------")
+
+# This funcion is used to insert a single record about one fatigue tracking session
+def func_InsertFatigueStatic(sessionID:str, blinksCount:int, AlarmCount:int, sessionStart, sessionEnd):
+    # Sample usage:
+    # r = func_InsertFatigueStatic(sessionID="asdf",blinksCount=12,AlarmCount=15, sessionEnd="2020-12-02 12:12:12", sessionStart="2020-12-02 12:12:12")
+    # if r:
+    #     print("OK")
+    #     func_displayDatabase()
+
+    # Connect to the database
+    dbConn = func_ConnectToDB()
+
+    # Perper the paramters
+    paramters={"sessionID": sessionID, "blinksCount":blinksCount, "AlarmCount":AlarmCount, \
+               "sessionStart": sessionStart, "sessionEnd":sessionEnd}
+
+    # Creatre the SQL statment
+    theSql = "INSERT INTO `fatigueStatic`(`SessionID`, `SessionStart`, `SessionEND`, `BlinkCount`, `AlarmCount`)" \
+             " VALUES (%(sessionID)s,%(sessionStart)s,%(sessionEnd)s,%(blinksCount)s,%(AlarmCount)s)"
+
+    # Send the sql
+    r = func_InsertSQL(Conn=dbConn, SQLStatment=theSql, parameters=paramters)
+
+    # Check and return the result
+    if type(r) is Err:
+        return r
+    else:
+        return True
