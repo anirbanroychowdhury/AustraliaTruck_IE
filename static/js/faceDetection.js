@@ -25,7 +25,7 @@ function startCamera() {
     video.play();
     setInterval(function() {
       startVideoProcessing()
-    }, 200);
+    }, 300);
   })
     .catch(function(err) {
     console.log("An error occured! " + err);
