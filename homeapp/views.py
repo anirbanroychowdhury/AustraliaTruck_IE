@@ -49,27 +49,25 @@ def rules(request):
     else:
         Rule_List = ["NONE", ""]
     # ------------------------------------------------
+          # Trucks types extraction form database to be added to the combobox
+    db_truck_types = db.func_SendSQL(dbConn, "SELECT TypeName, ID FROM truckstype order by ID")
+    if type(db_truck_types) is Err:
+        db_truck_types = ["NONE"]
+    truck_types = []
+    for i in range(0, len(db_truck_types)):
+        truck_types.append("<option value='"+ str(db_truck_types[i][1]) +"'>"+ str(db_truck_types[i][0]) +"</option>")
+
+    # License Types extraction form database to be added to the combobox
+    db_License_types = db.func_SendSQL(dbConn, "SELECT LicenseTypeName, LicenseTypeID FROM licensetype order by LicenseTypeID")
+    if type(db_License_types) is Err:
+        db_License_types = ["NONE"]
+
+    License_types = []
+    for i in range(0, len(db_License_types)):
+        License_types.append("<option value='"+ str(db_License_types[i][1]) +"'>"+ str(db_License_types[i][0]) +"</option>")
 
     if request.method != 'POST':
         # Get request or empty POST, simply display the normal page with the form
-
-        # Trucks types extraction form database to be added to the combobox
-        db_truck_types = db.func_SendSQL(dbConn, "SELECT TypeName, ID FROM truckstype order by ID")
-        if type(db_truck_types) is Err:
-            db_truck_types = ["NONE"]
-        truck_types = []
-        for i in range(0, len(db_truck_types)):
-            truck_types.append("<option value='"+ str(db_truck_types[i][1]) +"'>"+ str(db_truck_types[i][0]) +"</option>")
-
-        # License Types extraction form database to be added to the combobox
-        db_License_types = db.func_SendSQL(dbConn, "SELECT LicenseTypeName, LicenseTypeID FROM licensetype order by LicenseTypeID")
-        if type(db_License_types) is Err:
-            db_License_types = ["NONE"]
-
-        License_types = []
-        for i in range(0, len(db_License_types)):
-            License_types.append("<option value='"+ str(db_License_types[i][1]) +"'>"+ str(db_License_types[i][0]) +"</option>")
-
         # Render the final result
         return render(request, "VicRules.html", {"TruckTypes": truck_types, "LicenseTypes": License_types, "RuleList": Rule_List})#, "RulePicture": RulePictures})
 
@@ -96,7 +94,7 @@ def rules(request):
             dbConn.close()
 
         # Runder the final result
-        return render(request, "VicRulesSpacific.html", {"SpasficRules": db_Spasifci_List, "NormalRules":Rule_List })
+        return render(request, "VicRulesSpacific.html", {"SpasficRules": db_Spasifci_List, "NormalRules":Rule_List, "TruckTypes": truck_types, "LicenseTypes": License_types, "RuleList": Rule_List})
 
 def func_GeneralRules(db_Rule_List):
     # General Rules list extraction
