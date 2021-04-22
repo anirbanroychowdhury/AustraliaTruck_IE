@@ -55,7 +55,10 @@ def rules(request):
         db_truck_types = ["NONE"]
     truck_types = []
     for i in range(0, len(db_truck_types)):
-        truck_types.append("<option value='"+ str(db_truck_types[i][1]) +"'>"+ str(db_truck_types[i][0]) +"</option>")
+        if request.method == 'POST' and request.POST['Truck'] == str(db_truck_types[i][1]):
+            truck_types.append("<option selected='selected' value='" + str(db_truck_types[i][1]) + "'>" + str(db_truck_types[i][0]) + "</option>")
+        else:
+            truck_types.append("<option value='"+ str(db_truck_types[i][1]) +"'>"+ str(db_truck_types[i][0]) +"</option>")
 
     # License Types extraction form database to be added to the combobox
     db_License_types = db.func_SendSQL(dbConn, "SELECT LicenseTypeName, LicenseTypeID FROM licensetype order by LicenseTypeID")
@@ -64,7 +67,10 @@ def rules(request):
 
     License_types = []
     for i in range(0, len(db_License_types)):
-        License_types.append("<option value='"+ str(db_License_types[i][1]) +"'>"+ str(db_License_types[i][0]) +"</option>")
+        if request.method == 'POST' and request.POST['License'] == str(db_License_types[i][1]):
+            License_types.append("<option selected='selected' value='"+ str(db_License_types[i][1]) +"'>"+ str(db_License_types[i][0]) +"</option>")
+        else:
+            License_types.append("<option value='"+ str(db_License_types[i][1]) +"'>"+ str(db_License_types[i][0]) +"</option>")
 
     if request.method != 'POST':
         # Get request or empty POST, simply display the normal page with the form
@@ -73,8 +79,6 @@ def rules(request):
 
     else:
         # request method is  'POST':
-
-        print(request.POST['Truck'], ">", request.POST['License'])
         if (int(request.POST['License']) ==1 and int(request.POST['Truck']) > 2) or \
                 (int(request.POST['License']) == 2 and int(request.POST['Truck']) > 3):
             db_Spasifci_List = ["<p style='color:Tomato;'> Your license level does not allow you to drive this type of cars!</p>", '']
