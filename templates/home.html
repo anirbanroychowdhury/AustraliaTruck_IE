@@ -76,7 +76,7 @@
                             </div>
                             <div class="team-caption">
                                 <span>Fatigue Cause Accidents</span>
-                                <h5>This High number of driving hours can cause fatigue and hence result in an accident</h5>
+                                <h5>Long hours of driving cause slow accumilation of fatigue, which might result in a fatal accident if left undetected.</h5>
                             </div>
                         </div>
                     </div>
@@ -87,8 +87,8 @@
                             </div>
                             <div class="team-caption">
                                 <span>Fatigue Detection</span>
-                                <h5>To avoid such accident our product will help you stay awake by detecting fatigue,
-                                    using visual recognition system to detect drowsiness</h5>
+                                <h5>To avoid such accident our product will act as an early warning system.Helping you keep awake at critical moments.
+                                    By using visual recognition system to detect drowsiness we will be able to help you from falling asleep</h5>
                             </div>
                         </div>
                     </div>
@@ -117,8 +117,8 @@
                                 <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">1. Face Detection </a></h5>
-                                <p>The application is equipped with an open CV which makes use of the device camera to check the drowsiness rate </p>
+                                <h5><a href="/face">1. Face Detection </a></h5>
+                                <p>The application is equipped with an open CV module which makes use of the device camera to check the drowsiness rate </p>
                             </div>
                             <!-- Shpape -->
                             <img class="shape1 d-none d-lg-block" src="{% static "img/icon/serices1.png"%}" alt="">
@@ -130,7 +130,7 @@
                                 <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">2. Maintenance Checklist </a></h5>
+                                <h5><a href="checklist">2. Maintenance Checklist </a></h5>
                                 <p>Provide Maintenance Checklist before trip</p>
                             </div>
                             <img class="shape2 d-none d-lg-block" src="{% static "img/icon/serices2.png"%}" alt="">
@@ -142,7 +142,7 @@
                                 <span class="flaticon-list"></span>
                             </div>
                             <div class="services-cap">
-                                <h5><a href="#">3. Rule and regulations</a></h5>
+                                <h5><a href="rules">3. Rule and regulations</a></h5>
                                 <p>Provide Specific Rule and regulations for truck driver</p>
                             </div>
                         </div>
@@ -164,24 +164,23 @@
                 <div class="row justify-content-between">
                     <div class="col-lg-5">
                         <h4 class="text-light">Crashes caused by Fatigue</h4>
-                        <p class="text-white">Within the Southern Region, fatigue crashes accounted for 11% of all crashes between 1996 and
-                            1998. This is higher compared to drink driving crashes Fatigue crashes represent
-                            11% of fatal and injury crashes.</p>
+                        <p class="text-white">Within the Southern Region of Australia, fatigue crashes accounted for 11% of all fatal crashes between 1996 and
+                            1998. This is higher compared to drunk driving crashes.</p>
                     </div>
                     <div class="col-lg-5">
                         <h4 class="text-light">Fatigue Crashes based on Age.</h4>
-                        <p class="text-white">Driver age groups involved in fatigue related crashes.
-                            Age between 21-25 years has acquired around 35% and 40-49 years around 20%
-                            of the age groups. This descreases as we go above 49 years.</p>
+                        <p class="text-white">In a study of age groups of truck drivers, 
+                        the group for 21-25 years made up about 35% of the total Fatigue related accidents. Age group 40-49 years made up about 20%. 
+                        A trend of steady decline has been noticed as age goes above 49years.</p>
                     </div>
                     <div class="col-lg-5">
                         <h4 class="text-light">Driving Hours</h4>
-                        <p class="text-white">On av erage truck driver spent 71.6 hours per week on driving, loading and maintenance.
+                        <p class="text-white">On average truck driver spend 71.6 hours per week on driving, loading and maintenance.
                             Compared to other motorist this is 4 times more. </p>
                     </div>
                     <div class="col-lg-5">
                         <h4 class="text-light">Truck drivers work</h4>
-                        <p class="text-white">Among things they liked least about the job 29.2% Truck drivers put long hours/difficulty
+                        <p class="text-white">In a ranking of job satisfaction, 29.2% of Truck drivers major dissatisfaction stemmed from long hours/difficulty
                         hours as first on the list followed by loading and tax.</p>
                     </div>
                 </div>
@@ -219,7 +218,12 @@
                             </object>
                         </div>
                         <script type='text/javascript'>
-                                                var divElement = document.getElementById('viz1618976054070');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                            var divElement = document.getElementById('viz1618976054070');
+                            var vizElement = divElement.getElementsByTagName('object')[0];
+                            vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+                            var scriptElement = document.createElement('script');
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);
                         </script>
                     </div>
                     <div class="col-lg-3">
@@ -240,20 +244,6 @@
 
 
          <!-- RestStop  end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Testimonial End -->
 
 
 </main>

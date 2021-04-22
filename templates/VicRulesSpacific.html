@@ -16,8 +16,6 @@
 {%endblock stylesheets%}
 {% block content %}
 
-
-
     <main>
         <!-- Hero Start-->
         <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/h2_hero.jpg"%}">
@@ -25,7 +23,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center pt-50">
-                            <h2>Trucks releted road rules and regulation in Victoria</h2>
+                            <h2>Trucks related road rules and regulation in Victoria</h2>
                         </div>
                     </div>
                 </div>
@@ -34,36 +32,55 @@
         <!--Hero End -->
 
         <!-- Start -->
-
-        <!-- Rules Listing -->
+        <!-- Combo box fill in -->
         <div class="container box_1170">
             <p class="sample-text">
-                <h3>Spasifc rules</h3>
-                <ol>
-                    {% for oneSType in SpasficRules %}
-                    <li>{{oneSType|safe}}</li>
-                    <br>
-                    {% endfor %}
-                </ol>
+                <form method="post" action="/rules"> {% csrf_token %}  {{ form }}
+                    <h6>Select your truck type please:</h6>
+                    <select name="Truck" id="Truck">
+                        {% for oneType in TruckTypes %}
+                        {{oneType|safe}}
+                        {% endfor %}
+                    </select>
+                    <br><br><br>
+                    <h6>Select your licence type please:</h6>
+                    <select name="License" id="License">
+                        {% for oneType in LicenseTypes %}
+                        {{oneType|safe}}
+                        {% endfor %}
+                    </select>
+                    <br><br><br>
+                    <input type="submit" value="Show Related Rules"/>
+                </form>
             </p>
         </div>
+        <br>
 
-                <!-- Rules Listing -->
+        <!-- Spaecific Rules Listing  OLD -->
+        {% if SpasficRules %}
+            <div class="container box_1170">
+                <h3>Specific rules</h3>
+                {% for oneSType in SpasficRules %}
+                    <div class="card">
+                        {{oneSType|safe}}
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- General Rules Listing -->
         <div class="container box_1170">
-            <p class="sample-text">
-                <h3>Generac rules</h3>
-
-                <ol>
-                    {% for oneRule in NormalRules %}
-                    <li>{{oneRule|safe}}</li>
-                    <br>
-                    {% endfor %}
-                </ol>
-            </p>
+            <h3>Generic rules</h3>
+            {% for oneRule in NormalRules %}
+                <div class="card">
+                    {{oneRule|safe}}
+                </div>
+                <br>
+            {% endfor %}
         </div>
+
 
     </main>
-
-
 
 {% endblock %}

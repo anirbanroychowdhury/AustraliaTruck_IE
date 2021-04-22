@@ -16,11 +16,20 @@ OpenCV: It is a library of programming functions mainly aimed at real-time compu
 
 To start the project:
 1. Open Powershell terminal.
-1. Git clone the project through powershell. command - git pull origin master
-2. Install dependencies through <mark>pip install -rq requirements.txt</mark> through powershell.
+1. Git clone the project through powershell. command - git clone SSH_KEY
+2. Install dependencies through <mark>pip install -r requirements.txt</mark> on powershell.
 3. Change DEBUG=TRUE to run on local machine in settings.py, under folder austruckie.
 4. To run django server, use python manage.py runserver on terminal.
 5. NOTE: The above command should be run from the root folder of the project where manage.py is located. 
 
-IDE Required: Visual Studio Code, PyCharm, etc - anyone will work
+For the database creation on local:
+1. Install your MySQL server.
+2. Change the database connection information to your local server in the file “\austruckie\DatabaseControler.py”.
+3. Create a new python file and import DatabaseControler.py.
+4. Call the function “func_CreateDatabase()” from the “DatabaseControler” module to create the tables and dump the data.
+5. Run your python file.
+6. To check if the database’s data, you can use the function “func_displayDatabase()” from “DatabaseControler” module which will print out all the tables and their data.
+
+IDE Required: Visual Studio Code or PyCharm.
+
 Terminal : Powershell or IDE one. 
