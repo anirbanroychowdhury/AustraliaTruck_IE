@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block stylesheets%}
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+{%endblock stylesheets%}
+{% block content %}
+
+
+    <main>
+        <!-- Hero Start-->
+        <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/rules.gif"%}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center pt-50">
+                            <h2>Trucks releted road rules and regulation in Victoria</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Hero End -->
+
+        <!-- Start -->
+        <!-- Combo box fill in -->
+        <div class="container box_1170">
+            <p class="sample-text">
+                <form method="post" action="/rules"> {% csrf_token %}  {{ form }}
+                    <h6>Select your truck type please:</h6>
+                    <select name="Truck" id="Truck">
+                        {% for oneType in TruckTypes %}
+                        {{oneType|safe}}
+                        {% endfor %}
+                    </select>
+                    <br><br><br>
+                    <h6>Select your licence type please:</h6>
+                    <select name="License" id="License">
+                        {% for oneType in LicenseTypes %}
+                        {{oneType|safe}}
+                        {% endfor %}
+                    </select>
+                    <br><br><br>
+                    <input type="submit" value="show releated rule"/>
+                </form>
+            </p>
+        </div>
+        <br>
+
+        <!-- Rules Listing -->
+        <div class="container box_1170">
+            <p class="sample-text">
+                <h3>General Rule for all trucks drivers:</h3>
+                <ol>
+                    {% for oneRule in RuleList %}
+                    <li>{{oneRule|safe}}</li>
+                    <br>
+                    {% endfor %}
+                </ol>
+            </p>
+        </div>
+
+    </main>
+
+
+
+{% endblock %}
