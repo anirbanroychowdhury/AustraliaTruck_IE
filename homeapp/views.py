@@ -49,10 +49,12 @@ def rules(request):
     else:
         Rule_List = ["NONE", ""]
     # ------------------------------------------------
-          # Trucks types extraction form database to be added to the combobox
+    # Trucks types extraction form database to be added to the combobox
     db_truck_types = db.func_SendSQL(dbConn, "SELECT TypeName, ID FROM truckstype order by ID")
     if type(db_truck_types) is Err:
         db_truck_types = ["NONE"]
+
+    # Create the truck types combobox items
     truck_types = []
     for i in range(0, len(db_truck_types)):
         if request.method == 'POST' and request.POST['Truck'] == str(db_truck_types[i][1]):
@@ -65,6 +67,7 @@ def rules(request):
     if type(db_License_types) is Err:
         db_License_types = ["NONE"]
 
+    # Create the License combobox items
     License_types = []
     for i in range(0, len(db_License_types)):
         if request.method == 'POST' and request.POST['License'] == str(db_License_types[i][1]):
@@ -75,15 +78,18 @@ def rules(request):
     if request.method != 'POST':
         # Get request or empty POST, simply display the normal page with the form
         # Render the final result
-        return render(request, "VicRules.html", {"TruckTypes": truck_types, "LicenseTypes": License_types, "RuleList": Rule_List})#, "RulePicture": RulePictures})
+        return render(request, "VicRulesSpacific.html", {"TruckTypes": truck_types, "LicenseTypes": License_types, \
+                                                         "NormalRules": Rule_List})
 
     else:
         # request method is  'POST':
+
+        # Check the match between Licence type and the truck type
         if (int(request.POST['License']) ==1 and int(request.POST['Truck']) > 2) or \
                 (int(request.POST['License']) == 2 and int(request.POST['Truck']) > 3):
             db_Spasifci_List = ["<p style='color:Tomato;'> Your license level does not allow you to drive this type of cars!</p>", '']
         else:
-            # Perpear the SQL
+            # Perpear the SQL for the user choice
             theSQL = "SELECT `RuleText`, SignPictureURL FROM `ruleandregulation` WHERE `Truck`<=%(TruckType)s AND `Truck`>1"
             # Prepear the Paramters
             parameters = {"TruckType":request.POST['Truck'], "LicenseType":request.POST['License']}
@@ -95,10 +101,14 @@ def rules(request):
                 # No error, clean data
                 db_Spasifci_List = func_GeneralRules(db_Spasifci_List)
 
+            if db_Spasifci_List == []:
+                db_Spasifci_List = ["No Specific rules was found", ""]
+
             dbConn.close()
 
         # Runder the final result
-        return render(request, "VicRulesSpacific.html", {"SpasficRules": db_Spasifci_List, "NormalRules":Rule_List, "TruckTypes": truck_types, "LicenseTypes": License_types, "RuleList": Rule_List})
+        return render(request, "VicRulesSpacific.html", {"SpasficRules": db_Spasifci_List, "NormalRules":Rule_List, \
+                                                         "TruckTypes": truck_types, "LicenseTypes": License_types})
 
 def func_GeneralRules(db_Rule_List):
     # General Rules list extraction
