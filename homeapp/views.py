@@ -131,13 +131,24 @@ def func_GeneralRules(db_Rule_List):
     HTML_rule = []
 
     for oneRule in db_Rule_List:
-        htmlRule = "<p style='border:2px solid'>"
+        #         <div class='card' style='width: 18rem;'>
+        #             <img class='card-img-top' src='...' alt='Card image cap'>
+        #             <div class='card-body'>
+        #                 <h5 class='card-title'>Card title</h5>
+        #                 <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        #                 <a href='#' class='btn btn-primary'>Go somewhere</a>
+        #             </div>
+        #         </div>
+
+        htmlRule = "<div class='card'><div class='card-body'>"
+
+        # Check if the rule has an image
         if oneRule[1] != "" and oneRule[1] != None:
             # Add the picture src if it is there
-            htmlRule = htmlRule + "<img src='" + str(oneRule[1]) + "'><br>"
+            htmlRule = htmlRule + "<img src='" + str(oneRule[1]) + "'>"
 
         # Add the rule text in format
-        htmlRule = htmlRule + "&nbsp;&nbsp;" + oneRule[0] + "</p>"
+        htmlRule = htmlRule + "<p class='card-text'>&nbsp;&nbsp;" + oneRule[0] + "</p></div></div>"
         HTML_rule.append(htmlRule)
 
     return HTML_rule
