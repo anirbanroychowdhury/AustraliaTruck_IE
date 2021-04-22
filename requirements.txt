@@ -1,5 +1,5 @@
 ﻿asgiref==3.3.1
-Django==3.1.7
+Django>=3.1.8
 djangorestframework==3.12.4
 dlib==19.22.0
 numpy==1.19.5
