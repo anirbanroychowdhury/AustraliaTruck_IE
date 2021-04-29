@@ -32,10 +32,14 @@ class Camera(object):
         #Get the frame
         camera_frame = self.to_process.pop(0)
         #process it using OpenCV and get the result
+        #result[0] - proessed frame
+        #result[1] - Alarm boolean value
+        #result[2] - No of eye blinks
         result = self.process.process(camera_frame)
         #append the results in their respective queues
         self.to_output.append(result[0])
         self.to_alarm.append(result[1])
+        # print(result[2])
     
     #keep sending the images
     def keep_processing(self):

@@ -15,11 +15,6 @@ import dlib
 import base64
 from scipy.spatial import distance as dist
 import numpy as np
-from PIL import Image
-from threading import Thread
-import time
-from django.core.files.base import ContentFile
-import io
 
 #Convert to np array
 def shape_to_np(shape, dtype="int"):
@@ -55,7 +50,7 @@ class webopencv(object):
         # blink and then a second constant for the number of consecutive
         # frames the eye must be below the threshold for to set off the
         # alarm
-        self.EYE_AR_THRESH = 0.3
+        self.EYE_AR_THRESH = 0.25
         self.EYE_AR_CONSEC_FRAMES = 28
         # initialize the frame counter as well as a boolean used to
         # indicate if the alarm is going off
@@ -66,6 +61,8 @@ class webopencv(object):
         self.lEnd = 48
         self.rStart = 36
         self.rEnd = 42
+        #Count of eye blinks
+        self.EYE_BLINK_COUNT = 0
 
     def process(self, img):
         #Get frame in np array
@@ -95,6 +92,7 @@ class webopencv(object):
             cv2.drawContours(frame,[leftEyeHull], -1, (0,255,0), 1)
             cv2.drawContours(frame,[rightEyeHull], -1, (0,255,0), 1)
             if avgEAR < self.EYE_AR_THRESH:
+                self.EYE_BLINK_COUNT += 1
                 self.COUNTER += 1
                 if self.COUNTER >= self.EYE_AR_CONSEC_FRAMES:
                     if not self.ALARM_ON:
@@ -105,8 +103,9 @@ class webopencv(object):
                 self.COUNTER = 0
             #Add text showing ratio
             cv2.putText(frame,"EAR: {:.2f}".format(avgEAR), (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+            cv2.putText(frame,"You have blinked: {:.2f}".format(self.EYE_BLINK_COUNT), (300, 50),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         ret, jpeg = cv2.imencode('.jpg',frame)
         jpeg_b64 = base64.b64encode(jpeg)
         jpeg_b64 = jpeg_b64.decode('utf-8')
-        data = [jpeg_b64,self.ALARM_ON]
+        data = [jpeg_b64,self.ALARM_ON,self.EYE_BLINK_COUNT]
         return data
