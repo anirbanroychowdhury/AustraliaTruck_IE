@@ -1,4 +1,3 @@
 venv/
-staticfiles/
-austruckie/settings.py
-austruckie/austruck_Old.sql
+/austruckie/settings.py
+/austruckie/austruck_Old.sql
