@@ -140,6 +140,8 @@ class webopencv(object):
             else:
                 self.ALARM_ON = False
                 self.COUNTER = 0
+                # self.EYE_BLINK_COUNT = 0
+                # self.YAWN_COUNT = 0
             #Add text showing ratio
             cv2.putText(frame,"EAR: {:.2f}".format(avgEAR), (300, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
             cv2.putText(frame,"You have blinked: {:.2f}".format(self.EYE_BLINK_COUNT), (300, 50),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
@@ -147,5 +149,5 @@ class webopencv(object):
         ret, jpeg = cv2.imencode('.jpg',frame)
         jpeg_b64 = base64.b64encode(jpeg)
         jpeg_b64 = jpeg_b64.decode('utf-8')
-        data = [jpeg_b64,self.ALARM_ON,self.EYE_BLINK_COUNT]
+        data = [jpeg_b64,self.ALARM_ON]
         return data
