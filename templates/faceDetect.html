@@ -26,32 +26,34 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center pt-50">
-                            <h2>Face Detection</h2>
+                            <h2>Fatigue Detection</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
             <div class="container box_1170" style="text-align:center;">
+                         <div class="container box_1170">
+                <h2 class="text-heading">NOTE: This application requires webcam access. It will not work if it is being used by another application(e.g. Zoom)</h2>
+                <h2 class="text-heading">EAR: Eyes Average Ratio</h2>
+                <p class="sample-text" >
+                By Using OpenCV framework and machine learning, we can detect your eyes and the number of time you blink. Based on such factors we can create an early warning system to WAKE YOU UP!
+                EAR is a measure of your eyes blinks over a period of time. Whenever the EAR goes below 0.2 for more than 15sec, the system will assume that you have fallen asleep at the wheel and sound an alarm.
+                </p>
+            </div>
                 <br><br>
                 <h2 class="text-heading">Camera Video</h2>
                   <div class="invisible" >
                     <video id="video" style="visibility: visible;">Your browser does not support the video tag.</video>
                   </div>
                 <br><br>
-                <h2 class="text-heading">Face Detection</h2>
+                <h2 class="text-heading">Processed Video Stream</h2>
                     <div class="image">
                         <img id="returned-image">
                     </div>
                 <br><br>
             <section class="sample-text-area">
-            <div class="container box_1170">
-                <h2 class="text-heading">NOTE: This application requires webcam access. It will not work if it is being used by another application(e.g. Zoom)</h2>
-                <h2 class="text-heading">EAR: Eyes Average Ratio</h2>
-                <p class="sample-text" >
-                By detecting your eyes and keeping a track of how long they stay closed and the amount you blink we can measure your fatigue levels. Anytime EAR goes below 0.2 for more than 15seconds an alarm will be played to WAKE YOU UP!
-                </p>
-            </div>
+           
         </section>
             </div>
         <br><br>
@@ -80,4 +82,3 @@
 <script async src="https://huningxin.github.io/opencv.js/build/wasm/opencv.js"></script>
 
 {% endblock scripts %}
-
