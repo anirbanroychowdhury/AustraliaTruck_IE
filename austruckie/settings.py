@@ -24,7 +24,7 @@ SECRET_KEY = '96m&w0p21+k+x6#&3*@l09_ec*!6aelvzj4)wl*ly8n_j%xw#+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['austruck.herokuapp.com', '.herokuapp.com','127.0.0.1','www.austruck.ml','www.austruck.games','austruck.games']
+ALLOWED_HOSTS = ['ausietrucktest.herokuapp.com','austruck.herokuapp.com', '.herokuapp.com','127.0.0.1','www.austruck.ml','www.austruck.games','austruck.games']
 
 
 # Application definition
