@@ -1,3 +1,2 @@
 venv/
-staticfiles/
-austruckie/settings.py
+/austruckie/settings.py

@@ -21,7 +21,7 @@ def passwordasking(request):
 def requestAccess(request):
     if request.method == 'POST':
         # The request type is POST, so check the paramters
-        if request.POST['passIn'] == 'haddoken':
+        if request.POST['passIn'] == 'AustruckMA14':
             # Password was correct, display the main page
             global accessOK
             accessOK = True
@@ -120,11 +120,13 @@ def func_GeneralRules(db_Rule_List):
         db_Rule_List[i] = list(db_Rule_List[i])
         tempstr = str(db_Rule_List[i][0])
         # Clean
-        tempstr = tempstr.replace("\\r\\n", "<br> - ")
+        print("Before:", tempstr)
+        tempstr = tempstr.replace("\r\n", "<br> - ")
         tempstr = tempstr.replace("Â»", " ")
         tempstr = tempstr.replace("'", "")
         tempstr = tempstr.replace("]", "")
         tempstr = tempstr.replace("[", "")
+        print("After:", tempstr)
         # Update
         db_Rule_List[i][0] = tempstr
 
