@@ -120,11 +120,13 @@ def func_GeneralRules(db_Rule_List):
         db_Rule_List[i] = list(db_Rule_List[i])
         tempstr = str(db_Rule_List[i][0])
         # Clean
-        tempstr = tempstr.replace("\\r\\n", "<br> - ")
+        print("Before:", tempstr)
+        tempstr = tempstr.replace("\r\n", "<br> - ")
         tempstr = tempstr.replace("Â»", " ")
         tempstr = tempstr.replace("'", "")
         tempstr = tempstr.replace("]", "")
         tempstr = tempstr.replace("[", "")
+        print("After:", tempstr)
         # Update
         db_Rule_List[i][0] = tempstr
 
