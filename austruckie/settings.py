@@ -133,3 +133,7 @@ STATICFILES_DIRS = (
 )
 
 django_heroku.settings(locals())
+
+# This is new
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
