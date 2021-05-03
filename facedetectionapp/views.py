@@ -21,19 +21,32 @@ from django.core.files.base import ContentFile
 
 #Get user camera through javascript
 # webopencv() function to initialize class from process
-camera = Camera(webopencv())
 
+# camera = Camera(webopencv())
+cameraList = []
 
 def index_view(request, *args, **kwargs):
-    """Video streaming home page."""
-    return render(request,'faceDetect.html',{})
-
+	request.session.create()
+	return render(request,'faceDetect.html',{})
 
 #Converts the gives file into base64 and enques it into the image queue
 @csrf_exempt
 def video_feed(request, *args, **kwargs):
 	#IF request is POST
 	if request.method == 'POST':
+		camera = None
+		CurrentSession = request.session.session_key
+		# print(CurrentSession)
+		for oneCamaer in cameraList:
+			if oneCamaer.getID() == CurrentSession:
+				camera = oneCamaer
+				break
+
+		if camera == None:
+			camera = Camera(webopencv(),CurrentSession)
+			cameraList.append(camera)
+
+		print(camera.getID())
 		_format, _data = str(request.body).split(';base64,')
 		#Convert the string into an image
 		file = ContentFile( base64.b64decode(_data))
