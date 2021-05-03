@@ -41,6 +41,9 @@ def video_feed(request, *args, **kwargs):
 		sessionID = request.session.session_key
 		if sessionID in cameraList:
 			camera = cameraList[sessionID]
+		else:
+			camera = Camera(webopencv(),sessionID)
+			cameraList[sessionID] = camera
 		print(camera.getID())
 		_format, _data = str(request.body).split(';base64,')
 		#Convert the string into an image
