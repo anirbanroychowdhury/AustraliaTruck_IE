@@ -85,8 +85,8 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 #     }
 # }
 
-DATABASE = {}
-DATABASE['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -132,4 +132,4 @@ STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
 )
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
