@@ -132,8 +132,8 @@ STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
 )
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
-# This is new
-options = DATABASES['default'].get('OPTIONS', {})
-options.pop('sslmode', None)
+# # This is new
+# options = DATABASES['default'].get('OPTIONS', {})
+# options.pop('sslmode', None)
