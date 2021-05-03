@@ -27,35 +27,44 @@ cameraList = {}
 
 def index_view(request, *args, **kwargs):
 	request.session.create()
-	sessionID = request.session.session_key
-	if sessionID not in cameraList:
-		camera = Camera(webopencv(),sessionID)
-		cameraList[sessionID] = camera
-	return render(request,'faceDetect.html',{})
+	try:
+		sessionID = request.session.session_key
+		if sessionID not in cameraList:
+			camera = Camera(webopencv(),sessionID)
+			cameraList[sessionID] = camera
+		return render(request,'faceDetect.html',{})
+	except Exception as e:
+		print(e)
 
 #Converts the gives file into base64 and enques it into the image queue
 @csrf_exempt
 def video_feed(request, *args, **kwargs):
 	#IF request is POST
-	if request.method == 'POST':
-		sessionID = request.session.session_key
-		if sessionID in cameraList:
-			camera = cameraList[sessionID]
-		else:
-			camera = Camera(webopencv(),sessionID)
-			cameraList[sessionID] = camera
-		print(camera.getID())
-		_format, _data = str(request.body).split(';base64,')
-		#Convert the string into an image
-		file = ContentFile( base64.b64decode(_data))
-		#Open image
-		img = Image.open(file)
-		#Enqueue
-		camera.enqueue_input(img)
-		#Get processed image
-		processedResult = camera.get_frame()
-		#Create dict for response
-		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
-		#Convert to Json and send response
-		return HttpResponse(json.dumps(res),content_type='application/json')
+	try:
+		if request.method == 'POST':
+			sessionID = request.session.session_key
+			if sessionID in cameraList:
+				print("Gettting camera from list")
+				camera = cameraList[sessionID]
+			else:
+				print("creating camera and appending to dict from video_feed")
+				camera = Camera(webopencv(),sessionID)
+				cameraList[sessionID] = camera
+			print(camera.getID())
+			_format, _data = str(request.body).split(';base64,')
+			#Convert the string into an image
+			file = ContentFile( base64.b64decode(_data))
+			#Open image
+			img = Image.open(file)
+			#Enqueue
+			camera.enqueue_input(img)
+			#Get processed image
+			processedResult = camera.get_frame()
+			#Create dict for response
+			res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
+			#Convert to Json and send response
+			return HttpResponse(json.dumps(res),content_type='application/json')
+	except Exception as e:
+		print(e)
+
         
