@@ -11,10 +11,16 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
+import dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#env file
+dotenv_file = os.path.join(BASE_DIR,".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file,encoding='utf-16')
 
 
 # Quick-start development settings - unsuitable for production
@@ -86,7 +92,7 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 # }
 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600,ssl_require=True)
 
 
 # Password validation
@@ -133,7 +139,4 @@ STATICFILES_DIRS = (
 )
 
 django_heroku.settings(locals())
-
-# This is new
-options = DATABASES['default'].get('OPTIONS', {})
-options.pop('sslmode', None)
+del DATABASES['default']['OPTIONS']['sslmode']
