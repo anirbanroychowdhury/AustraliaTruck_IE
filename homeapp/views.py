@@ -87,7 +87,7 @@ def rules(request):
         # Check the match between Licence type and the truck type
         if (int(request.POST['License']) ==1 and int(request.POST['Truck']) > 2) or \
                 (int(request.POST['License']) == 2 and int(request.POST['Truck']) > 3):
-            db_Spasifci_List = ["<p style='color:Tomato;'> Your license level does not allow you to drive this type of cars!</p>", '']
+            db_Spasifci_List = ["<p style='color:Tomato;'><img src='static/img/icon/worrning.png'>  Your license level does not allow you to drive this type of cars!</p>", '']
         else:
             # Perpear the SQL for the user choice
             theSQL = "SELECT `RuleText`, SignPictureURL, cat FROM `ruleandregulation` WHERE `Truck`<=%(TruckType)s AND `Truck`>1"
@@ -102,7 +102,7 @@ def rules(request):
                 db_Spasifci_List = func_GeneralRules(db_Spasifci_List)
 
             if db_Spasifci_List == []:
-                db_Spasifci_List = ["No Specific rules was found", ""]
+                db_Spasifci_List = ["<img src='static/img/icon/worrning.png'>  No Specific rules was found", ""]
 
             dbConn.close()
 
