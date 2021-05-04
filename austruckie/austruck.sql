@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 19, 2021 at 07:10 AM
+-- Generation Time: May 04, 2021 at 03:16 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -91,18 +91,6 @@ INSERT INTO `roadsdef` (`RoadTypeID`, `SpeedLimit`, `RoadSize`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roadsrule`
---
-
-DROP TABLE IF EXISTS `roadsrule`;
-CREATE TABLE IF NOT EXISTS `roadsrule` (
-  `RoadTypeID` int(11) NOT NULL,
-  `RuleID` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ruleandregulation`
 --
 
@@ -115,6 +103,7 @@ CREATE TABLE IF NOT EXISTS `ruleandregulation` (
   `Road` varchar(20) DEFAULT NULL,
   `RuleCondition` text,
   `SignPictureURL` text,
+  `cat` varchar(60) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
@@ -122,28 +111,28 @@ CREATE TABLE IF NOT EXISTS `ruleandregulation` (
 -- Dumping data for table `ruleandregulation`
 --
 
-INSERT INTO `ruleandregulation` (`ID`, `RuleText`, `Truck`, `License`, `Road`, `RuleCondition`, `SignPictureURL`) VALUES
-(1, 'Must hold at least 1 year of Australian car license.', 1, 1, NULL, '', ''),
-(2, 'Must travel at speeds no greater than the speed displayed on a speed limit sign as well as complying with the following conditions: \r\n» 40 km/h in a local traffic zone signed 40 km/h \r\n» 50 km/h in a built-up area not otherwise signed \r\n» 100 km/h in a 100 km/h zone \r\n» 100 km/h in a 110 km/h zone.', 1, 1, NULL, 'pneumatic tyres', ''),
-(3, 'Must wear a properly adjusted and fastened seatbelt where one is fitted, or is required by law to be fitted to the vehicle.( As part of managing fatigue there is an exemption from wearing seatbelts for two-up drivers in sleeping compartments)', 1, 1, NULL, NULL, ''),
-(4, 'You must carry three approved portable warning triangles in your vehicle at all times.', 3, 3, NULL, NULL, ''),
-(5, 'If you have to stop your vehicle or if any part of your load falls onto the road (including the shoulder), three portable warning triangles must be placed on the road', 3, 3, NULL, '', ''),
-(6, 'On roads with a speed limit of 80km/h or more, if the vehicle is not visible for 300 metres in all directions: \r\n» one triangle must be placed 200-250 metres behind the vehicle or fallen load, \r\n» one triangle must be placed 200-250 metres in front of the vehicle or fallen load, and \r\n» one triangle must be placed by the side of the vehicle or fallen load. ', 3, 3, '80', NULL, ''),
-(7, 'On roads with a speed limit of 80km/h or more, if the vehicle is not visible for 200 metres in all directions: \r\n» one triangle must be placed 50-150 metres behind the vehicle or fallen load, \r\n» one triangle must be placed 50-150 metres in front of the vehicle or fallen load, and \r\n» one triangle must be placed by the side of the vehicle or fallen load. \r\n', 3, 3, '70', NULL, ''),
-(8, 'Drivers of fatigue-regulated heavy vehicles must work to standard hours if the operator they work for does not hold BFM or AFM accreditation.', 1, 1, NULL, NULL, ''),
-(9, 'A pre-trip inspection should be done by the driver which includes external check, vehicle tilt, load and load security, vehicle damage, leaks, area check, wheels and rims, check wheel nuts, tyres, engine checks and driver controls check.', 1, 1, NULL, NULL, ''),
-(10, 'The sign “DO NOT OVERTAKE TURNING VEHICLE” may be attached to the rear of heavy vehicles over 7.5 metres long. Traffic following behind you must be able to see it clearly. The sign allows the driver to occupy space outside an assigned lane when turning so long as: » the vehicle is within 50 metres from the corner » the move can be made safely » wherever possible, you should set up the back of your vehicle so that traffic behind you cannot overtake your vehicle on the side you are turning to.', 3, 3, NULL, NULL, ''),
-(11, 'This sign has been introduced on some three-lane and four -lane freeways in Victoria. It prohibits all heavy vehicles over 4.5 tonnes, except buses and caravans, from travelling in the right lane wherever it is displayed. The restriction applies 24 hours a day.\r\n', 2, 2, NULL, NULL, NULL),
-(12, 'Load limit signs may apply to bridges or sections of road. You must not pass this sign if axle group mass of your vehicle is more than that allowed by the sign. Fines are heavy and you might have to pay for damage caused to roads that cannot take the weight of your vehicle.\r\n', 2, 2, NULL, NULL, NULL),
-(14, 'If the driver of a truck drives past a trucks must enter sign, the driver must enter the area indicated by information on or with the sign. \r\n', 2, 2, NULL, NULL, NULL),
-(15, 'No goods-carrying vehicle over 4.5 tonnes GVM can pass this sign without a permit from VicRoads or from the local council, unless the following exemptions apply: \r\n» the driver travels beyond the sign in any other lane, or \r\n» the driver of the truck is loading or unloading at a location beyond the no truck sign and no suitable alternative route to the location exists \r\n» the driver is escorted by a police officer or an authorised officer of the corporation. \r\n', 2, 2, NULL, NULL, '\\static\\img\\RuleSigns\\notrucks.png'),
-(16, 'This sign will tell you the clearance under the bridge and may indicate a detour to avoid the obstruction. Check that your vehicle will fit under the bridge. You must know your maximum vehicle height. \r\n', 3, 3, NULL, NULL, '\\static\\img\\RuleSigns\\lowbridge.png'),
-(17, 'A low clearance sign will tell you the clearance under the obstruction. If your vehicle is the height shown on the sign or higher, you must not drive under it. ', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\lowclearance.png'),
-(18, 'Clearance signs will tell you the clearance under an obstruction. These signs are only used where the clearance is at least 4 metres. If your vehicle is the height on the sign or higher, you must not drive under it.\r\n', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\clearance.png'),
-(19, 'Perform coupling of trailers by inspecting the area, inspect or check coupling devices, check trailer height, back the prime mover, check the connection, secure the vehicle, visually inspect, connect the electrical cable, raise the trailer supports and remove trailer wheel chocks.', 1, 1, NULL, NULL, NULL),
-(20, 'Perform uncoupling of trailers by positioning the vehicle, apply the trailer brakes, secure the vehicle, lower the landing gear, disconnect air lines, release the turntable latch, pull the prime mover partially clear, secure the prime mover again, inspect the semi-trailer support and release the parking brake.', 1, 1, NULL, NULL, NULL),
-(22, 'Must hold at least 2 years and successfully completing an approved training course', 6, 6, NULL, NULL, ''),
-(26, 'Must hold at least 1 year and successfully completing an approved training course', 8, 8, NULL, NULL, '');
+INSERT INTO `ruleandregulation` (`ID`, `RuleText`, `Truck`, `License`, `Road`, `RuleCondition`, `SignPictureURL`, `cat`) VALUES
+(1, 'Must hold at least 1 year of Australian car license.', 1, 1, NULL, '', '\\static\\img\\RuleSigns\\Licence.png', 'Required license'),
+(2, 'Must travel at speeds no greater than the speed displayed on a speed limit sign as well as complying with the following conditions: \r\n» 40 km/h in a local traffic zone signed 40 km/h \r\n» 50 km/h in a built-up area not otherwise signed \r\n» 100 km/h in a 100 km/h zone \r\n» 100 km/h in a 110 km/h zone.', 1, 1, NULL, 'pneumatic tyres', '\\static\\img\\RuleSigns\\70Speed.png', 'Speed Limits'),
+(3, 'Must wear a properly adjusted and fastened seatbelt where one is fitted, or is required by law to be fitted to the vehicle.( As part of managing fatigue there is an exemption from wearing seatbelts for two-up drivers in sleeping compartments)', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\fastenedseatbelt.jpg', 'Fastened Seatbelt'),
+(4, 'You must carry three approved portable warning triangles in your vehicle at all times.', 3, 3, NULL, NULL, '\\static\\img\\RuleSigns\\WorningTriangle.jpg', 'Carrying Warning Triangles'),
+(5, 'If you have to stop your vehicle or if any part of your load falls onto the road (including the shoulder), three portable warning triangles must be placed on the road', 3, 3, NULL, '', '\\static\\img\\RuleSigns\\WorningTriangle.jpg', 'Placing Warning Triangles'),
+(6, 'On roads with a speed limit of 80km/h or more, if the vehicle is not visible for 300 metres in all directions: \r\n» one triangle must be placed 200-250 metres behind the vehicle or fallen load, \r\n» one triangle must be placed 200-250 metres in front of the vehicle or fallen load, and \r\n» one triangle must be placed by the side of the vehicle or fallen load. ', 3, 3, '80', NULL, '\\static\\img\\RuleSigns\\80Speed.png', 'Placing Warning Triangles'),
+(7, 'On roads with a speed limit of 80km/h or more, if the vehicle is not visible for 200 metres in all directions: \r\n» one triangle must be placed 50-150 metres behind the vehicle or fallen load, \r\n» one triangle must be placed 50-150 metres in front of the vehicle or fallen load, and \r\n» one triangle must be placed by the side of the vehicle or fallen load.', 3, 3, '70', NULL, '\\static\\img\\RuleSigns\\80Speed.png', 'Placing Warning Triangles'),
+(8, 'Drivers of fatigue-regulated heavy vehicles must work to standard hours if the operator they work for does not hold BFM or AFM accreditation.', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\Fatigue.png', 'Fatigue-regulated'),
+(9, 'A pre-trip inspection should be done by the driver which includes external check, vehicle tilt, load and load security, vehicle damage, leaks, area check, wheels and rims, check wheel nuts, tyres, engine checks and driver controls check.', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\Mintance.png', 'Pre-trip Inspection'),
+(10, 'The sign “DO NOT OVERTAKE TURNING VEHICLE” may be attached to the rear of heavy vehicles over 7.5 metres long. Traffic following behind you must be able to see it clearly. The sign allows the driver to occupy space outside an assigned lane when turning so long as: » the vehicle is within 50 metres from the corner » the move can be made safely » wherever possible, you should set up the back of your vehicle so that traffic behind you cannot overtake your vehicle on the side you are turning to.', 3, 3, NULL, NULL, '\\static\\img\\RuleSigns\\DO_NOT_OVERTAKE_TURNING.jpg', 'OVERTAKE TURNING Sign'),
+(11, 'This sign has been introduced on some three-lane and four -lane freeways in Victoria. It prohibits all heavy vehicles over 4.5 tonnes, except buses and caravans, from travelling in the right lane wherever it is displayed. The restriction applies 24 hours a day.', 2, 2, NULL, NULL, '\\static\\img\\RuleSigns\\notrucks.png', 'No Heavy Vehicles Allowed'),
+(12, 'Load limit signs may apply to bridges or sections of road. You must not pass this sign if axle group mass of your vehicle is more than that allowed by the sign. Fines are heavy and you might have to pay for damage caused to roads that cannot take the weight of your vehicle.', 2, 2, NULL, NULL, '\\static\\img\\RuleSigns\\BridgeLimit.png', 'Bridges Load limit'),
+(14, 'If the driver of a truck drives past a trucks must enter sign, the driver must enter the area indicated by information on or with the sign.', 2, 2, NULL, NULL, '\\static\\img\\RuleSigns\\trucksmustenter.png', 'Trucks Must Enter'),
+(15, 'No goods-carrying vehicle over 4.5 tonnes GVM can pass this sign without a permit from VicRoads or from the local council, unless the following exemptions apply: \r\n» the driver travels beyond the sign in any other lane, or \r\n» the driver of the truck is loading or unloading at a location beyond the no truck sign and no suitable alternative route to the location exists \r\n» the driver is escorted by a police officer or an authorised officer of the corporation.', 2, 2, NULL, NULL, '\\static\\img\\RuleSigns\\notrucks.png', 'Goods-carrying load limit'),
+(16, 'This sign will tell you the clearance under the bridge and may indicate a detour to avoid the obstruction. Check that your vehicle will fit under the bridge. You must know your maximum vehicle height.', 3, 3, NULL, NULL, '\\static\\img\\RuleSigns\\lowbridge.png', 'Under the bridge clearance limit'),
+(17, 'A low clearance sign will tell you the clearance under the obstruction. If your vehicle is the height shown on the sign or higher, you must not drive under it. ', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\lowclearance.png', 'Obstruction clearance limit'),
+(18, 'Clearance signs will tell you the clearance under an obstruction. These signs are only used where the clearance is at least 4 metres. If your vehicle is the height on the sign or higher, you must not drive under it.', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\clearance.png', 'Obstruction clearance limit'),
+(19, 'Perform coupling of trailers by inspecting the area, inspect or check coupling devices, check trailer height, back the prime mover, check the connection, secure the vehicle, visually inspect, connect the electrical cable, raise the trailer supports and remove trailer wheel chocks.', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\GoodsCappling.png', 'Coupling of trailers'),
+(20, 'Perform uncoupling of trailers by positioning the vehicle, apply the trailer brakes, secure the vehicle, lower the landing gear, disconnect air lines, release the turntable latch, pull the prime mover partially clear, secure the prime mover again, inspect the semi-trailer support and release the parking brake.', 1, 1, NULL, NULL, '\\static\\img\\RuleSigns\\GoodsCappling.png', 'Uncoupling of trailers'),
+(22, 'Must hold at least 2 years and successfully completing an approved training course', 6, 6, NULL, NULL, '\\static\\img\\RuleSigns\\certifact.png', 'Multi combination Required license '),
+(26, 'Must hold at least 1 year and successfully completing an approved training course', 8, 8, NULL, NULL, '\\static\\img\\RuleSigns\\certifact.png', 'Heavy combination Required license');
 
 -- --------------------------------------------------------
 

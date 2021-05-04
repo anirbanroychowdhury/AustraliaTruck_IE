@@ -43,7 +43,7 @@ def rules(request):
 
     # ------------------------------------------------
     # General Rules list extraction
-    generalRulesResult = db.func_SendSQL(dbConn, "SELECT RuleText, SignPictureURL FROM ruleandregulation where Truck=1")
+    generalRulesResult = db.func_SendSQL(dbConn, "SELECT RuleText, SignPictureURL, cat FROM ruleandregulation where Truck=1")
     if type(generalRulesResult) is not Err:
         Rule_List = func_GeneralRules(generalRulesResult)
     else:
@@ -90,7 +90,7 @@ def rules(request):
             db_Spasifci_List = ["<p style='color:Tomato;'> Your license level does not allow you to drive this type of cars!</p>", '']
         else:
             # Perpear the SQL for the user choice
-            theSQL = "SELECT `RuleText`, SignPictureURL FROM `ruleandregulation` WHERE `Truck`<=%(TruckType)s AND `Truck`>1"
+            theSQL = "SELECT `RuleText`, SignPictureURL, cat FROM `ruleandregulation` WHERE `Truck`<=%(TruckType)s AND `Truck`>1"
             # Prepear the Paramters
             parameters = {"TruckType":request.POST['Truck'], "LicenseType":request.POST['License']}
             # Send the SQL
@@ -120,37 +120,44 @@ def func_GeneralRules(db_Rule_List):
         db_Rule_List[i] = list(db_Rule_List[i])
         tempstr = str(db_Rule_List[i][0])
         # Clean
-        print("Before:", tempstr)
         tempstr = tempstr.replace("\r\n", "<br> - ")
         tempstr = tempstr.replace("Â»", " ")
         tempstr = tempstr.replace("'", "")
         tempstr = tempstr.replace("]", "")
         tempstr = tempstr.replace("[", "")
-        print("After:", tempstr)
         # Update
         db_Rule_List[i][0] = tempstr
 
     HTML_rule = []
 
     for oneRule in db_Rule_List:
-        #         <div class='card' style='width: 18rem;'>
-        #             <img class='card-img-top' src='...' alt='Card image cap'>
-        #             <div class='card-body'>
-        #                 <h5 class='card-title'>Card title</h5>
-        #                 <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        #                 <a href='#' class='btn btn-primary'>Go somewhere</a>
-        #             </div>
-        #         </div>
+        # Sample out put of one rule HTML
+        #                 <div class="flip-box">
+        #                     <div class="flip-box-inner">
+        #                         <div class="flip-box-front">
+        #                             <img src="img_paris.jpg">
+        #                         </div>
+        #                         <div class="flip-box-back">
+        #                             <h2>Paris</h2>
+        #                             <p>What an amazing city</p>
+        #                         </div>
+        #                     </div>
+        #                 </div>
 
-        htmlRule = "<div class='card'><div class='card-body'>"
+        htmlRule = "<div class='flip-box'><div class='flip-box-inner'><div class='flip-box-front'>"
+        htmlRule = htmlRule + "<table><tr><td>"
 
         # Check if the rule has an image
         if oneRule[1] != "" and oneRule[1] != None:
             # Add the picture src if it is there
             htmlRule = htmlRule + "<img src='" + str(oneRule[1]) + "'>"
+        else:
+            htmlRule = htmlRule + "<img src='\static\img\RuleSigns\\vicroads.png'>"
+
+        htmlRule = htmlRule + "</td><td><h2>&nbsp;&nbsp;" + str(oneRule[2]) + "</h2></td></tr></table>"
 
         # Add the rule text in format
-        htmlRule = htmlRule + "<p class='card-text'>&nbsp;&nbsp;" + oneRule[0] + "</p></div></div>"
+        htmlRule = htmlRule + "</div><div class='flip-box-back' style='vertical-align:middle'>" + oneRule[0] + "</div></div></div>"
         HTML_rule.append(htmlRule)
 
     return HTML_rule
