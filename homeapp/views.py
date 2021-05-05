@@ -21,7 +21,7 @@ def passwordasking(request):
 def requestAccess(request):
     if request.method == 'POST':
         # The request type is POST, so check the paramters
-        if request.POST['passIn'] == 'haddoken':
+        if request.POST['passIn'] == 'AustruckMA14':
             # Password was correct, display the main page
             global accessOK
             accessOK = True
