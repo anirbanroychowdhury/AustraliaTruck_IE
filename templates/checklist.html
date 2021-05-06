@@ -230,7 +230,20 @@ img {
   transform: rotate(45deg);
 }
 
+.btn{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+}
 
 </style>
 
@@ -281,34 +294,34 @@ img {
                   <h3 class="popup-title">Engine Compartment</h3>
                     <br>
                     <label class="container">Energy Oil Level
-                      <input type="checkbox" checked="checked">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Engine Coolant Level
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Clutch Fluid Level
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Brake Fluid Level
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Power Steering Fluid Level
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Screen Washer Fluid Level
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Ancillary Drive Belts
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                 </aside>
@@ -322,34 +335,34 @@ img {
                   <h3 class="popup-title">Light Compartment</h3>
                     <br>
                     <label class="container">Indicators Lights
-                      <input type="checkbox" checked="checked">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Driving and Fog Lights
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Park Lights
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Clearance Light
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Brake Light
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Hazard Light
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                     <label class="container">Tail Lights
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
                 </aside>
@@ -362,22 +375,22 @@ img {
                   <h3 class="popup-title">Tyre Compartment</h3>
                     <br>
                     <label class="container">Tyre Pressure
-                      <input type="checkbox" checked="checked">
+                      <input id="check_value"input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Tyre Damage
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Rims Damage
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Spare Wheel/Tyre
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
@@ -392,22 +405,22 @@ img {
                   <h3 class="popup-title">Body Compartment</h3>
                     <br>
                     <label class="container">Body Damage
-                      <input type="checkbox" checked="checked">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Fluid Leaks
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Load properly secured
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Fuel Tanks
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
@@ -422,22 +435,22 @@ img {
                   <h3 class="popup-title">Towing Compartment</h3>
                     <br>
                     <label class="container">Air hoses and cables
-                      <input type="checkbox" checked="checked">
+                      <input id="check_value" input type="checkbox" >
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Pin couplings
-                      <input type="checkbox">
+                      <input id="check_value" input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Towing Attachments
-                      <input type="checkbox">
+                      <input id="check_value"  input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
                     <label class="container">Security
-                      <input type="checkbox">
+                      <input id="check_value", input type="checkbox">
                       <span class="checkmark"></span>
                     </label>
 
@@ -446,10 +459,10 @@ img {
 
               <img src="{% static "img/gallery/truck_map.jpeg"%}" usemap="#image-map", alt="">
             </div>
-        <br><br><br><br><br><br>
-
-
-
+        <br><br>
+        <div class = 'none' style="text-align:center">
+        <button class='btn btn-primary' onclick="validate()">Finish Checklist!</button></div>
+        <br><br>
 
  </main>
 
@@ -482,6 +495,15 @@ jQuery(function($) {
     }
   });
 });
+
+  function validate() {
+        if (document.getElementById('check_value').checked) {
+            bootbox.alert({message: "Congratulations, you've completed all checklists.!",size: 'large' });
+        } else {
+            bootbox.alert("Sorry, it looks like you haven't completed all the checklists. Please finish as soon as possible.");
+        }
+
+}
 </script>
 {% endblock scripts %}
 
