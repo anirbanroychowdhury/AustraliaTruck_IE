@@ -32,15 +32,21 @@
                 </div>
             </div>
         </div>
+         <br><br>
             <div class="container box_1170" style="text-align:center;">
                          <div class="container box_1170">
-                <h2 class="text-heading">NOTE: This application requires webcam access. It will not work if it is being used by another application(e.g. Zoom)</h2>
-                <h2 class="text-heading">EAR: Eyes Average Ratio</h2>
-                <p class="sample-text" >
-                By Using OpenCV framework and machine learning, we can detect your eyes and the number of time you blink. Based on such factors we can create an early warning system to WAKE YOU UP!
-                EAR is a measure of your eyes blinks over a period of time. Whenever the EAR goes below 0.2 for more than 15sec, the system will assume that you have fallen asleep at the wheel and sound an alarm.
-                </p>
-            </div>
+                                             <p class="sample-text" >
+                                                 Fatigue detection provides our user with a
+                                                 feature that helps them stay awake. By the usage
+                                                 of OpenCV framework, we are able to detect facial
+                                                 feature that depicts if the user is feeling drowsy or not.
+                                                 Based on users eye movement and yawning we can identify and
+                                                 sound an alarm if they end up sleeping.
+                                             </p>
+
+
+<!--                         </div>-->
+                         </div>
                 <br><br>
                 <h2 class="text-heading">Camera Video</h2>
                   <div class="invisible" >
@@ -57,6 +63,20 @@
         </section>
             </div>
         <br><br>
+        <div class="container box_1170">
+            <p class="sample-text" >
+                By using the OpenCV framework and machine learning,
+                we can detect user's eyes and the number of time they blink.
+                Based on such factors we can create an early warning system to WAKE THEM UP!
+            </p>
+            <p class="sample-text" >
+                To implement this we use EAR (eye aspect ratio) to measure eye blinks over a period of time.
+                Based on our analysis, whenever the EAR value on the screen goes below 0.2 for more than 15sec,
+                the system will assume that the user has fallen asleep at the wheel and will sound an alarm.
+            </p>
+            <p class="text-heading" style="font-size:12px">NOTE: This application requires camera/webcam access. It will not work if it
+                is being used by another application (e.g. Zoom)</p>
+            </div>
 
     <audio id="alarmSound" src="{% static 'alarm.wav' %}"></audio>
     </main>
