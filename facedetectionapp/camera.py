@@ -15,11 +15,12 @@ from time import sleep
 
 class Camera(object):
     #Creates a Camera object
-    def __init__(self, process):
+    def __init__(self, process,sessionID):
         self.to_process = []
         self.to_output = []
         self.to_alarm = []
         self.process = process
+        self.sessionID = sessionID
         #Create and start a thread when an pbject is initiated
         thread = threading.Thread(target=self.keep_processing, args=())
         thread.daemon = True
@@ -52,3 +53,6 @@ class Camera(object):
             sleep(0.01)
         data = [self.to_output.pop(0),self.to_alarm.pop(0)]
         return data
+    
+    def getID(self):
+        return self.getID()

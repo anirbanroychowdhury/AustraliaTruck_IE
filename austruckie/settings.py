@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_2c359834c332ed6',
-        'USER': 'b89f7ac9ae97e7',
-        'PASSWORD': '12576c53',
-        'HOST': 'us-cdbr-east-03.cleardb.com',
+        'NAME': 'heroku_3f45b23dc1721a2',
+        'USER': 'b9152b69c8a0db',
+        'PASSWORD': '9dfb648e',
+        'HOST': 'eu-cdbr-west-01.cleardb.com',
         'PORT': '5432',
     }
 }
