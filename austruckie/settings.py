@@ -83,17 +83,6 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 #    }
 #}
 
-# DATABASES = {
-#       'default': {
-#           'ENGINE': 'django.db.backends.mysql',
-#           'NAME': 'austruck',
-#           'USER': 'root',
-#           'PASSWORD': 'alibhp110',
-#           'HOST': '127.0.0.1',
-#           'PORT': '3306', 5432
-#       }
-#  }
-
 DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
