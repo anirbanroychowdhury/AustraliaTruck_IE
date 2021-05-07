@@ -47,7 +47,6 @@ def video_feed(request, *args, **kwargs):
 			print("creating camera and appending to dict from video_feed")
 			camera = Camera(webopencv(),sessionID)
 			cameraList[sessionID] = camera
-		print(camera.getID())
 		_format, _data = str(request.body).split(';base64,')
 		#Convert the string into an image
 		file = ContentFile( base64.b64decode(_data))
