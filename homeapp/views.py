@@ -11,7 +11,7 @@
 from django.shortcuts import render
 
 import austruckie.DatabaseControler as db
-import austruckie.ErrorReporting as Err
+from austruckie.ErrorReporting import ausError as Err
 
 # By Ali Albahrani
 # A var used to check if the user have the right to access the home page
@@ -61,7 +61,7 @@ def rules(request):
     # ------------------------------------------------
     # General Rules list extraction
     generalRulesResult = db.func_SendSQL(dbConn, "SELECT RuleText, SignPictureURL, cat FROM ruleandregulation where Truck=1")
-    if type(generalRulesResult) is not Err.ausError:
+    if type(generalRulesResult) is not Err:
         # OK, convert the SQL return value to HTML values and push is to the final result array
         Rule_List = func_GeneralRules(generalRulesResult)
     else:
@@ -71,7 +71,7 @@ def rules(request):
 
     # Trucks types extraction form database to be added to the combobox
     db_truck_types = db.func_SendSQL(dbConn, "SELECT TypeName, ID FROM truckstype order by ID")
-    if type(db_truck_types) is Err.ausError:
+    if type(db_truck_types) is Err:
         # No data has been return
         db_truck_types = ["NONE"]
 
@@ -90,7 +90,7 @@ def rules(request):
 
     # License Types extraction form database to be added to the combobox
     db_License_types = db.func_SendSQL(dbConn, "SELECT LicenseTypeName, LicenseTypeID FROM licensetype order by LicenseTypeID")
-    if type(db_License_types) is Err.ausError:
+    if type(db_License_types) is Err:
         db_License_types = ["NONE"]
 
     # Create the License combobox items ( same as Turck type one )
@@ -123,7 +123,7 @@ def rules(request):
             db_Spasifci_List = db.func_SendSQL(myDBin=dbConn, SQLStatment=theSQL, parameters=parameters)
 
             # Check the sql reuslts
-            if type(db_Spasifci_List) is not Err.ausError:
+            if type(db_Spasifci_List) is not Err:
                 # No error, clean data
                 db_Spasifci_List = func_GeneralRules(db_Spasifci_List)
 
@@ -138,7 +138,7 @@ def rules(request):
 
 def func_GeneralRules(db_Rule_List):
     # General Rules list extraction
-    if type(db_Rule_List) is Err.ausError:
+    if type(db_Rule_List) is Err:
         print(db_Rule_List)
         db_Rule_List = []
     else:
