@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="{% static "/css/slick.css" %}">
     <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
     <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "/css/cardsFlip.css" %}">
 {%endblock stylesheets%}
 {% block content %}
-
     <main>
+
         <!-- Hero Start-->
-        <div class="hero-area2  slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/rules.gif"%}">
+        <div class="hero-area2 slider-height2 hero-overly2 d-flex align-items-center " data-background="{% static "/img/hero/rules.gif"%}">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -32,25 +33,33 @@
         <!--Hero End -->
 
         <!-- Start -->
+
         <!-- Combo box fill in -->
         <div class="container box_1170">
+            <br>
+            <h2>You can select your truck type and your licence type to check what rules and regulation you must know before driving you truck</h2>
+            <br>
             <p class="sample-text">
                 <form method="post" action="/rules"> {% csrf_token %}  {{ form }}
                     <h6>Select your truck type please:</h6>
-                    <select name="Truck" id="Truck">
+                    <select name="Truck" id="Truck" style="width:500;">
                         {% for oneType in TruckTypes %}
                         {{oneType|safe}}
                         {% endfor %}
                     </select>
                     <br><br><br>
                     <h6>Select your licence type please:</h6>
-                    <select name="License" id="License">
+                    <select name="License" id="License" style="width:500;">
                         {% for oneType in LicenseTypes %}
                         {{oneType|safe}}
                         {% endfor %}
                     </select>
                     <br><br><br>
-                    <input type="submit" value="Show Related Rules"/>
+                    <input type="submit" value="  Show Related Rules  "
+                           style="background-color:rgb(244, 74, 64);
+                                  border-radius:25px;
+                                  color:white;
+                                  padding: 10px 10px 10x 10px;"/>
                 </form>
             </p>
         </div>
@@ -59,11 +68,12 @@
         <!-- Spaecific Rules Listing  OLD -->
         {% if SpasficRules %}
             <div class="container box_1170">
-                <h3>Specific rules</h3>
+                <h1>Specific rules</h1>
+                <p class="normal-text">List of rules that are related to your selection of licence and truck types:</p>
                 {% for oneSType in SpasficRules %}
-                    <div class="card">
+                    <!-- div class="card"-->
                         {{oneSType|safe}}
-                    </div>
+                    <!--/div -->
                     <br>
                 {% endfor %}
             </div>
@@ -71,15 +81,15 @@
 
         <!-- General Rules Listing -->
         <div class="container box_1170">
-            <h3>Generic rules</h3>
+            <h1>Generic rules</h1>
+            <p class="normal-text">List of rules that you MUST know before driving a heavy vehicle in general:</p>
             {% for oneRule in NormalRules %}
-                <div class="card">
+                <!-- div class="card"-->
                     {{oneRule|safe}}
-                </div>
+                <!--/div -->
                 <br>
             {% endfor %}
         </div>
-
 
     </main>
 
