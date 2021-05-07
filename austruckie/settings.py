@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '96m&w0p21+k+x6#&3*@l09_ec*!6aelvzj4)wl*ly8n_j%xw#+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['austruck.herokuapp.com', '.herokuapp.com','127.0.0.1','www.austruck.ml','www.austruck.games','austruck.games']
 
@@ -76,15 +76,33 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
+# DATABASES = {
+#       'default': {
+#           'ENGINE': 'django.db.backends.mysql',
+#           'NAME': 'austruck',
+#           'USER': 'root',
+#           'PASSWORD': 'alibhp110',
+#           'HOST': '127.0.0.1',
+#           'PORT': '3306', 5432
+#       }
+#  }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_2c359834c332ed6',
-        'USER': 'b89f7ac9ae97e7',
-        'PASSWORD': '12576c53',
-        'HOST': 'us-cdbr-east-03.cleardb.com',
-        'PORT': '5432',
-    }
+      'default': {
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME': 'heroku_2c359834c332ed6',
+          'USER': 'b89f7ac9ae97e7',
+          'PASSWORD': '12576c53',
+          'HOST': 'us-cdbr-east-03.cleardb.com',
+          'PORT': '3306',
+      }
 }
 
 # Password validation
