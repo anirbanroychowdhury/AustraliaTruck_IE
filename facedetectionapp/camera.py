@@ -55,4 +55,4 @@ class Camera(object):
         return data
     
     def getID(self):
-        return self.getID()
+        return self.sessionID
