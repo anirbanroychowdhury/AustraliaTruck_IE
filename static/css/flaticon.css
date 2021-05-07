@@ -29,13 +29,12 @@ font-style: normal;
 
 }
 
-.flaticon-problem:before { content: "\f100"; }
-.flaticon-list:before { content: "\f101"; }
-.flaticon-travel:before { content: "\f102"; }
-.flaticon-respect:before { content: "\f103"; }
-.flaticon-work:before { content: "\f104"; }
-.flaticon-bed:before { content: "\f105"; }
-.flaticon-drink:before { content: "\f106"; }
-.flaticon-home:before { content: "\f107"; }
-.flaticon-food:before { content: "\f108"; }
-.flaticon-view-1:before { content: "\f109"; }
+.flaticon-note:before {
+    content: "\f101";
+}
+.flaticon-face-detection:before {
+    content: "\f102";
+}
+.flaticon-certificate:before {
+    content: "\f103";
+}
