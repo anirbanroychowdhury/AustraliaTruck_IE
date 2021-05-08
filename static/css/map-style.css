@@ -33,6 +33,8 @@ padding: 0;
 
 #right-panel {
   height: 100%;
+  float: right;
+  width: 390px;
   overflow: auto;
 }
 
@@ -68,4 +70,4 @@ overflow: hidden;
 }
 .custom-map-control-button:hover {
 background: #ebebeb;
-} 
+}
