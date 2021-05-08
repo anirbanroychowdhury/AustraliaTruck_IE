@@ -3,6 +3,7 @@
 // <script
 // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 let infoWindow;
+let locInfoWindow;
 let pos;
 function initMap() {
     //Declare direction and render services
@@ -15,7 +16,10 @@ function initMap() {
     });
     getCurrentLocation(map);
     //create a infowindow for locate me services
-    infoWindow = new google.maps.InfoWindow()
+    infoWindow = new google.maps.InfoWindow();
+    locInfoWindow = new google.maps.InfoWindow({
+        pixelOffset: new google.maps.Size(0,-50)
+    });
     //set the direction renderer on the map
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById("right-panel"));
@@ -35,17 +39,45 @@ function initMap() {
     locationButton.addEventListener("click",onLocationChangeHandler);
     //Add markers by loading geoJson
     map.data.loadGeoJson("../static/Rest_Area.geojson");
-    // map.data.addListener('mouseover', function(event) {
-    //     console.log(event['latLng'].lat());
-    //     console.log(event['latLng'].lng());
-    // });
+    map.data.addListener('mouseover', function(event) {
+        restAreaName = event['feature']['i']['RESTAREANAME'];
+        roadName = event['feature']['i']['DECLAREDROADNAME'];
+        localityName = event['feature']['i']['LOCALITY'];
+        caravanAccess = event['feature']['i']['CARAVANACCESS'];
+        campingAccess = event['feature']['i']['CAMPING'];
+        parkingRating = event['feature']['i']['DELINEATEDPARKING'];
+        siteAmeneties = event['feature']['i']['SITEAMENITY'];
+        const contentString = '<div id="content">'+
+       ' <div id = "bodyContent">'+
+    
+       '<ol>'+
+       '<li>'+'<h5>'+'Rest Area:'+restAreaName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Road Name:'+roadName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'locality Name:'+localityName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Caravan Access:'+caravanAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Camping Access:'+campingAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Parking Rating:'+parkingRating+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Site Ameneties Rating:'+siteAmeneties+'</h4>'+'</li>' +
+       '</ol>'+
+
+       '</div>'+
+       '</div>';
+        
+    
+        const marker = new google.maps.Marker({
+            position: {lat: event['latLng'].lat(), lng: event['latLng'].lng()},
+            map: map,
+            visible: false
+        });
+        locInfoWindow.setContent(contentString);
+        locInfoWindow.open(map, marker);
+        console.log(restAreaName);
+
+    });
+    //Get route between current location and one of the nearby rest stops on clicking
     map.data.addListener('click',function(event) {
-        destinationLat = event['latLng'].lat();
-        destinationLng = event['latLng'].lng();
-        destinationLoc = new google.maps.LatLng(destinationLat, destinationLng);
-        originLat = pos['lat'];
-        originLng = pos['lng'];
-        startLoc = new google.maps.LatLng(originLat, originLng);
+        destinationLoc = new google.maps.LatLng(event['latLng'].lat(), event['latLng'].lng());
+        startLoc = new google.maps.LatLng(pos['lat'], pos['lng']);
         route(directionsService, directionsRenderer, startLoc, destinationLoc)
     });
     console.log("At the end");
