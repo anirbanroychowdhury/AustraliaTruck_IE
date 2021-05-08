@@ -5,6 +5,7 @@
 let infoWindow;
 function initMap() {
     //create a map centred on melbourne
+    console.log("Inside map init")
     const map = new google.maps.Map(document.getElementById("map"), {
       mapTypeControl: false,
       center: { lat: -37.8136, lng: 144.9631 },
