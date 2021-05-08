@@ -21,12 +21,17 @@ from django.core.files.base import ContentFile
 
 #Get user camera through javascript
 # webopencv() function to initialize class from process
-camera = Camera(webopencv())
 
+# camera = Camera(webopencv())
+cameraList = {}
 
 def index_view(request, *args, **kwargs):
-    """Video streaming home page."""
-    return render(request,'faceDetect.html',{})
+	request.session.create()
+	sessionID = request.session.session_key
+	if sessionID not in cameraList:
+		camera = Camera(webopencv(),sessionID)
+		cameraList[sessionID] = camera
+	return render(request,'faceDetect.html',{})
 
 
 #Converts the gives file into base64 and enques it into the image queue
@@ -34,6 +39,14 @@ def index_view(request, *args, **kwargs):
 def video_feed(request, *args, **kwargs):
 	#IF request is POST
 	if request.method == 'POST':
+		sessionID = request.session.session_key
+		if sessionID in cameraList:
+			print("Gettting camera from list")
+			camera = cameraList[sessionID]
+		else:
+			print("creating camera and appending to dict from video_feed")
+			camera = Camera(webopencv(),sessionID)
+			cameraList[sessionID] = camera
 		_format, _data = str(request.body).split(';base64,')
 		#Convert the string into an image
 		file = ContentFile( base64.b64decode(_data))
@@ -47,4 +60,6 @@ def video_feed(request, *args, **kwargs):
 		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
 		#Convert to Json and send response
 		return HttpResponse(json.dumps(res),content_type='application/json')
+
+
         
