@@ -16,33 +16,84 @@
 {%endblock stylesheets%}
 {% block content %}
 
+<style>
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, .3);
+  background-blend-mode: multiply;
+}
+
+.carousel-caption {
+   position: absolute;
+   bottom:100px;
+}
+
+
+
+</style>
+
 
     <main>
 
         <!-- Hero Area Start-->
-        <div class="slider-area hero-overly" data-background="{% static "/img/hero/home_hero.gif"%}">
-            <div class="single-slider hero-overly  slider-height d-flex align-items-center" >
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-8 col-lg-9">
-                            <!-- Hero Caption -->
-                            <div class="hero__caption">
-                                <h1>Fatigue Detection</h1>
-                                <span>Aus Truck</span>
-                                <div class="button-group-area mt-20">
-                                    <a href="/face" class="genric-btn danger circle arrow">Click!<span class="lnr lnr-arrow-right"></span></a>
-
-                                </div>
 
 
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <!-- Slide One - Set the background image for this slide in the line below -->
+                  <div class="carousel-item active" style="background-image: url('{% static "img/hero/driver.jpg"%}')">
+                    <div class="carousel-caption">
+                      <h2 class="display-4" style="color:#eff3f0">Avoid Fatigue Driving Cause Accident!</h2>
+                       <p class="lead" style="color:#f5ece7">Early Driver Fatigue Detection</p>
+                        <div class="button-group-area mt-20">
+                            <a href="/face" class="genric-btn danger circle arrow">Click!<span class="lnr lnr-arrow-right"></span></a>
                         </div>
-                            </div>
-
                     </div>
-                </div>
 
-            </div>
-        </div>
+                  </div>
+                  <!-- Slide Two - Set the background image for this slide in the line below -->
+                  <div class="carousel-item" style="background-image: url('{% static "img/hero/check.jpeg"%}')">
+                    <div class="carousel-caption">
+                        <h2 class="display-4" style="color:white">Check Your Truck Before You GO!</h2>
+                      <p class="lead" style="color:#f5ece7">Maintenance Checklist</p>
+                        <div class="button-group-area mt-20">
+                            <a href="/checklist" class="genric-btn danger circle arrow">Click!<span class="lnr lnr-arrow-right"></span></a>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- Slide Three - Set the background image for this slide in the line below -->
+                  <div class="carousel-item" style="background-image: url('{% static "img/hero/signs.jpeg"%}')">
+                    <div class="carousel-caption" >
+                        <h2 class="display-4" style="color:white">New Driver? Unclear Truck Rules?</h2>
+                      <p class="lead" style="color:#f5ece7">Truck Rules And Regulations</p>
+                        <div class="button-group-area mt-20">
+                            <a href="/rules" class="genric-btn danger circle arrow">Click!<span class="lnr lnr-arrow-right"></span></a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+              </div>
+
+
         <!--Hero Area End-->
 
         <!-- Blog Ara Start -->
