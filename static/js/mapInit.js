@@ -5,6 +5,7 @@
 let infoWindow;
 let locInfoWindow;
 let pos;
+//Go back to home
 function goToHome(){
     window.location.href = '/home';
 }
@@ -47,7 +48,9 @@ function initMap() {
     goBackButton.addEventListener("click",goToHome);
     //Add markers by loading geoJson
     map.data.loadGeoJson("../static/Rest_Area.geojson");
+    //Listener to show info window on hover
     map.data.addListener('mouseover', function(event) {
+        //taking required data
         restAreaName = event['feature']['i']['RESTAREANAME'];
         roadName = event['feature']['i']['DECLAREDROADNAME'];
         localityName = event['feature']['i']['LOCALITY'];
@@ -55,12 +58,13 @@ function initMap() {
         campingAccess = event['feature']['i']['CAMPING'];
         parkingRating = event['feature']['i']['DELINEATEDPARKING'];
         siteAmeneties = event['feature']['i']['SITEAMENITY'];
+        //creating string to display required data
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
        '<ol>'+
        '<li>'+'<h5>'+'Rest Area:'+restAreaName+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Road Name:'+roadName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'locality Name:'+localityName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Locality Name:'+localityName+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Caravan Access:'+caravanAccess+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Camping Access:'+campingAccess+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Parking Rating:'+parkingRating+'</h4>'+'</li>' +
@@ -68,15 +72,16 @@ function initMap() {
        '</ol>'+
        '</div>'+
        '</div>';
+       //create a invisible marker to display the inforwindow on top pff
         const marker = new google.maps.Marker({
             position: {lat: event['latLng'].lat(), lng: event['latLng'].lng()},
             map: map,
             visible: false
         });
+        //set content
         locInfoWindow.setContent(contentString);
+        //display
         locInfoWindow.open(map, marker);
-        console.log(restAreaName);
-
     });
     //Get route between current location and one of the nearby rest stops on clicking
     map.data.addListener('click',function(event) {
@@ -84,7 +89,6 @@ function initMap() {
         startLoc = new google.maps.LatLng(pos['lat'], pos['lng']);
         route(directionsService, directionsRenderer, startLoc, destinationLoc)
     });
-    console.log("At the end");
   }
   
 
