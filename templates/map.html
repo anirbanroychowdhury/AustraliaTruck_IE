@@ -1,37 +1,40 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
 {% load static %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
-    <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
-    <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
-    <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
-    <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
-    <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
-    <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
-    <link rel="stylesheet" href="{% static "/css/slick.css" %}">
-    <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
-    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+  <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/owl.carousel.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/slicknav.css" %}">
+  <link rel="stylesheet" href="{% static "/css/flaticon.css" %}">
+  <link rel="stylesheet" href="{% static "/css/animate.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/magnific-popup.css" %}">
+  <link rel="stylesheet" href="{% static "/css/fontawesome-all.min.css" %}">
+  <link rel="stylesheet" href="{% static "/css/themify-icons.css" %}">
+  <link rel="stylesheet" href="{% static "/css/slick.css" %}">
+  <link rel="stylesheet" href="{% static "/css/nice-select.css" %}">
+  <link rel="stylesheet" href="{% static "/css/style.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "css/map-style.css" %}">
 {% endblock stylesheets %}
-{% block content%}
+
+{% comment %} {% block content%}
 
     <script src="{% static "/js/mapInit.js"%}"></script>
-    {% comment %} <div id="floating-panel">
-    <button><a class="btn btn-primary" href="/">Go Back</a></button>
-      <b>Start: </b>
-        <input type="text" id="start" name="start">
-      <b>End: </b>
-        <input type="text" id="end" name="end">
-    </div> {% endcomment %}
-    <div class="container box_1170">
+    
       <div id="map"></div>
-    </div
+
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=&v=weekly"
         async
     ></script>
-{% endblock content%}
+{% endblock content%}  {% endcomment %}
+<body>
+<script src="{% static "/js/mapInit.js"%}"></script>
+  <div id="right-panel"></div>
+  <div id="map"></div>
+  <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3uLMPBlaMM4CPWuKbQIfDIAfQwMU2aO4&callback=initMap&libraries=&v=weekly"
+        async
+    ></script>
+</body>
 
