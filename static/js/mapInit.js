@@ -4,19 +4,6 @@
 // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 let infoWindow;
 let pos;
-// function getCurrentLocationInit(){
-//     if(navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(success);
-//     }
-// }
-
-// function success(position){
-//     lat  = position.coords.latitude;
-//     lng =  position.coords.longitude;
-//     return [lat,lng]
-
-// }
-
 function initMap() {
     //Declare direction and render services
     const directionsService = new google.maps.DirectionsService();
@@ -24,9 +11,9 @@ function initMap() {
     //create a map centred on melbourne
     const map = new google.maps.Map(document.getElementById("map"), {
       mapTypeControl: false,
-      center: { lat: 37.9145, lng: 145.1275 },
       zoom: 13,
     });
+    getCurrentLocation(map);
     //create a infowindow for locate me services
     infoWindow = new google.maps.InfoWindow()
     //set the direction renderer on the map
