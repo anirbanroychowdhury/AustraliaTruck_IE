@@ -5,6 +5,9 @@
 let infoWindow;
 let locInfoWindow;
 let pos;
+function goToHome(){
+    window.location.href = '/home';
+}
 function initMap() {
     //Declare direction and render services
     const directionsService = new google.maps.DirectionsService();
@@ -25,18 +28,23 @@ function initMap() {
     directionsRenderer.setPanel(document.getElementById("right-panel"));
     //create the locate me button
     const locationButton = document.createElement("button");
+    const goBackButton = document.createElement("button");
     //Add text to the button
     locationButton.textContent = "Locate me";
+    goBackButton.textContent = "Go Back";
     //Add class
     locationButton.classList.add("custom-map-control-button");
+    goBackButton.classList.add("custom-map-control-button");
     //Push the button to the top left corner
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(goBackButton);
     //Set up listener
     const onLocationChangeHandler = function () {
         getCurrentLocation(map);
     }
     //Add listener
     locationButton.addEventListener("click",onLocationChangeHandler);
+    goBackButton.addEventListener("click",goToHome);
     //Add markers by loading geoJson
     map.data.loadGeoJson("../static/Rest_Area.geojson");
     map.data.addListener('mouseover', function(event) {
@@ -49,7 +57,6 @@ function initMap() {
         siteAmeneties = event['feature']['i']['SITEAMENITY'];
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
-    
        '<ol>'+
        '<li>'+'<h5>'+'Rest Area:'+restAreaName+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Road Name:'+roadName+'</h4>'+'</li>' +
@@ -59,11 +66,8 @@ function initMap() {
        '<li>'+'<h5>'+'Parking Rating:'+parkingRating+'</h4>'+'</li>' +
        '<li>'+'<h5>'+'Site Ameneties Rating:'+siteAmeneties+'</h4>'+'</li>' +
        '</ol>'+
-
        '</div>'+
        '</div>';
-        
-    
         const marker = new google.maps.Marker({
             position: {lat: event['latLng'].lat(), lng: event['latLng'].lng()},
             map: map,
