@@ -128,8 +128,8 @@ def func_GeneralRules(db_Rule_List):
         # Update
         db_Rule_List[i][0] = tempstr
 
+    htmlRule = "<div class='row justify-content-between'><div class='col-lg-5'>"
     HTML_rule = []
-
     for oneRule in db_Rule_List:
         # Sample out put of one rule HTML
         #                 <div class="flip-box">
@@ -144,7 +144,7 @@ def func_GeneralRules(db_Rule_List):
         #                     </div>
         #                 </div>
 
-        htmlRule = "<div class='flip-box'><div class='flip-box-inner'><div class='flip-box-front'>"
+        htmlRule = "<div class='column'><div class='flip-box'><div class='flip-box-inner'><div class='flip-box-front'>"
         htmlRule = htmlRule + "<table><tr><td>"
 
         # Check if the rule has an image
@@ -157,7 +157,23 @@ def func_GeneralRules(db_Rule_List):
         htmlRule = htmlRule + "</td><td><h2>&nbsp;&nbsp;" + str(oneRule[2]) + "</h2></td></tr></table>"
 
         # Add the rule text in format
-        htmlRule = htmlRule + "</div><div class='flip-box-back' style='vertical-align:middle'>" + oneRule[0] + "</div></div></div>"
+        htmlRule = htmlRule + "</div><div class='flip-box-back' style='vertical-align:middle'>" + oneRule[0] + "</div></div></div></div>"
         HTML_rule.append(htmlRule)
+    len_list = len(HTML_rule)
+    print(len_list)
+    newHTML_rule = []
+    for i in range(len_list):
+        # print(i)
+        if i == 0:
+            newHTML_rule.append( "<div class='row'>" + HTML_rule[i] )
+            print("YESSS")
+        elif i == (len_list-1):
+            newHTML_rule.append(HTML_rule[i] + '</div>')
+            print("YESSS")
+        else:
+            newHTML_rule.append(HTML_rule[i])
 
-    return HTML_rule
+
+    # HTML_rule[len] = [''.join(HTML_rule[len])]
+    # print(HTML_rule[1: 3])
+    return newHTML_rule
