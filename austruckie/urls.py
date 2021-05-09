@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from facedetectionapp.views import index_view, video_feed
 from homeapp.views import home_view, requestAccess, passwordasking, check_list, about_us, rules
+from mapapp.views import map_view
 
 
 
@@ -29,5 +30,6 @@ urlpatterns = [
     path('checklist', check_list, name='check_list'),
     path('aboutus', about_us, name = 'aboutus'),
     path('rules', rules, name = 'rules'),
-    path('access', requestAccess, name='access')
+    path('access', requestAccess, name='access'),
+    path('map',map_view, name='mapview')
 ]

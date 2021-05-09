@@ -64,6 +64,7 @@ function response(e) {
   var imageUrl = 'data:image/bmp;base64,'+this.response.camera_frame
   ret_img.src = imageUrl;
   if (this.response.alarm){
+    console.log(this.response.alarm)
     alarmObject.play();
   }else{
     alarmObject.pause();
