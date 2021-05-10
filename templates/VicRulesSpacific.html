@@ -70,12 +70,11 @@
             <div class="container box_1170">
                 <h1>Specific rules</h1>
                 <p class="normal-text">List of rules that are related to your selection of licence and truck types:</p>
+                <div class="row">
                 {% for oneSType in SpasficRules %}
-                    <!-- div class="card"-->
-                        {{oneSType|safe}}
-                    <!--/div -->
-                    <br>
+                    {{oneSType|safe}}
                 {% endfor %}
+            </div>
             </div>
         {% endif %}
 
@@ -83,12 +82,11 @@
         <div class="container box_1170">
             <h1>Generic rules</h1>
             <p class="normal-text">List of rules that you MUST know before driving a heavy vehicle in general:</p>
-            {% for oneRule in NormalRules %}
-                <!-- div class="card"-->
+            <div class="row">
+                {% for oneRule in NormalRules %}
                     {{oneRule|safe}}
-                <!--/div -->
-                <br>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
 
     </main>
