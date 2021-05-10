@@ -6,6 +6,7 @@ let infoWindow;
 let locInfoWindow;
 let pos;
 function initMap() {
+    window.alert("Each icon indicates a certain location such as rest stop, camping grounds etc. Click on the icon to get turn by turn directions to the place.");
     //Declare direction and render services
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
