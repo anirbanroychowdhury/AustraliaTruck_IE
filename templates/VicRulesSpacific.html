@@ -71,24 +71,28 @@
 
         <!-- Specific Rules Listing  OLD -->
         {% if SpasficRules %}
-            <div class="container">
+            <div class="container box_1170">
                 <h1>Specific rules</h1>
                 <p class="normal-text">List of rules that are related to your selection of licence and truck types:</p>
+                <div class="row">
                 {% for oneSType in SpasficRules %}
                             {{oneSType|safe}}
                     <br>
                 {% endfor %}
+                </div>
             </div>
         {% endif %}
 
         <!-- General Rules Listing -->
         <div class="container box_1170">
             <h1>Generic rules</h1>
+            <div class="row">
             <p class="normal-text">List of rules that you MUST know before driving a heavy vehicle in general:</p>
             {% for oneRule in NormalRules %}
                 {{oneRule|safe}}
                 <br>
             {% endfor %}
+                </div>
         </div>
 
     </main>
