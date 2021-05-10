@@ -6,6 +6,7 @@ let infoWindow;
 let locInfoWindow;
 let pos;
 function initMap() {
+    window.alert("Each icon indicates a certain location such as rest stop, camping grounds etc. Click on the icon to get turn by turn directions to the place.");
     //Declare direction and render services
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -58,26 +59,26 @@ function initMap() {
     //Listener to show info window on hover
     map.data.addListener('mouseover', function(event) {
         //taking required data
-        restAreaName = event['feature']['i']['RESTAREANAME'];
-        restAreaType = event['feature']['i']['RESTAREATYPE'];
-        roadName = event['feature']['i']['DECLAREDROADNAME'];
-        localityName = event['feature']['i']['LOCALITY'];
-        caravanAccess = event['feature']['i']['CARAVANACCESS'];
-        campingAccess = event['feature']['i']['CAMPING'];
-        parkingRating = event['feature']['i']['DELINEATEDPARKING'];
-        siteAmeneties = event['feature']['i']['SITEAMENITY'];
+        restAreaName = event['feature']['i']['RESTAREANAME'].toLowerCase();
+        restAreaType = event['feature']['i']['RESTAREATYPE'].toLowerCase();
+        roadName = event['feature']['i']['DECLAREDROADNAME'].toLowerCase();
+        localityName = event['feature']['i']['LOCALITY'].toLowerCase();
+        caravanAccess = event['feature']['i']['CARAVANACCESS'].toLowerCase();
+        campingAccess = event['feature']['i']['CAMPING'].toLowerCase();
+        parkingRating = event['feature']['i']['DELINEATEDPARKING'].toLowerCase();
+        siteAmeneties = event['feature']['i']['SITEAMENITY'].toLowerCase();
         //creating string to display required data
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
        '<ol>'+
-       '<li>'+'<h5>'+'Rest Area: '+restAreaName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Rest Area Type: '+restAreaType+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Road Name: '+roadName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Locality Name: '+localityName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Caravan Access: '+caravanAccess+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Camping Access: '+campingAccess+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Parking Rating: '+parkingRating+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Site Ameneties Rating: '+siteAmeneties+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-bed"></i> <b><u>'+'Rest Area:</b></u> '+restAreaName+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-question"></i> <b><u>'+'Rest Area Type:</b></u> '+restAreaType+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-road"></i> <b><u>'+'Road Name:</b></u> '+roadName+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-map-marker"></i> <b><u>'+'Locality Name:</b></u> '+localityName+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-caravan"></i> <b><u>'+'Caravan Access:</b></u> '+caravanAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-campground"></i> <b><u>'+'Camping Access:</b></u> '+campingAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-parking"></i> <b><u>'+'Parking Rating:</b></u> '+parkingRating+'</h4>'+'</li>' +
+       '<li>'+'<h5><i class="fas fa-star-half-alt"></i> <b><u>'+'Site Ameneties Rating:</b></u> '+siteAmeneties+'</h4>'+'</li>' +
        '</ol>'+
        '</div>'+
        '</div>';
