@@ -58,14 +58,14 @@ function initMap() {
     //Listener to show info window on hover
     map.data.addListener('mouseover', function(event) {
         //taking required data
-        restAreaName = event['feature']['i']['RESTAREANAME'];
-        restAreaType = event['feature']['i']['RESTAREATYPE'];
-        roadName = event['feature']['i']['DECLAREDROADNAME'];
-        localityName = event['feature']['i']['LOCALITY'];
-        caravanAccess = event['feature']['i']['CARAVANACCESS'];
-        campingAccess = event['feature']['i']['CAMPING'];
-        parkingRating = event['feature']['i']['DELINEATEDPARKING'];
-        siteAmeneties = event['feature']['i']['SITEAMENITY'];
+        restAreaName = event['feature']['i']['RESTAREANAME'].toLowerCase();
+        restAreaType = event['feature']['i']['RESTAREATYPE'].toLowerCase();
+        roadName = event['feature']['i']['DECLAREDROADNAME'].toLowerCase();
+        localityName = event['feature']['i']['LOCALITY'].toLowerCase();
+        caravanAccess = event['feature']['i']['CARAVANACCESS'].toLowerCase();
+        campingAccess = event['feature']['i']['CAMPING'].toLowerCase();
+        parkingRating = event['feature']['i']['DELINEATEDPARKING'].toLowerCase();
+        siteAmeneties = event['feature']['i']['SITEAMENITY'].toLowerCase();
         //creating string to display required data
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
