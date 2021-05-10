@@ -159,17 +159,15 @@ def func_GeneralRules(db_Rule_List):
         # Add the rule text in format
         htmlRule = htmlRule + "</div><div class='flip-box-back' style='vertical-align:middle'>" + oneRule[0] + "</div></div></div></div>"
         HTML_rule.append(htmlRule)
+    #grid format for rules and regulation
     len_list = len(HTML_rule)
     print(len_list)
     newHTML_rule = []
     for i in range(len_list):
-        # print(i)
         if i == 0:
             newHTML_rule.append( "<div class='row'>" + HTML_rule[i] )
-            print("YESSS")
         elif i == (len_list-1):
             newHTML_rule.append(HTML_rule[i] + '</div>')
-            print("YESSS")
         else:
             newHTML_rule.append(HTML_rule[i])
 
