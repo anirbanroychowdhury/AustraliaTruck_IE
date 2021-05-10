@@ -509,15 +509,7 @@ jQuery(function($) {
         if (document.getElementById('check_value').checked) {
             bootbox.alert({message: "Congratulations, you've completed all checklists.!",size: 'large' });
         } else {
-    bootbox.confirm({
-      title: 'Incomplete checklist',
-      message: 'To locate the nearest truck repair shops press "OK" else if you miss a step press "CACNEL"',
-      callback: function(result) {
-        if (result) {
-          window.location.href = 'https://www.google.com/search?q=nearest+truck+repair+shops&rlz=1C1ONGR_en-GBAU929AU929&oq=nearest+truck+repair+shops&aqs=chrome..69i57.7952j0j1&sourceid=chrome&ie=UTF-8';
-        }
-      }
-    });
+            bootbox.alert("Sorry, it looks like you haven't completed all the checklists. Please finish as soon as possible.");
         }
 
 }
