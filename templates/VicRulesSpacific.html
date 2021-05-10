@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center pt-50">
-                            <h2>Trucks related road rules and regulation in Victoria</h2>
+                            <h2>Rules and Regulation</h2>
                         </div>
                     </div>
                 </div>
@@ -37,8 +37,11 @@
         <!-- Combo box fill in -->
         <div class="container box_1170">
             <br>
-            <h2>You can select your truck type and your licence type to check what rules and regulation you must know before driving you truck</h2>
-            <br>
+            <h4>We provide specific information regarding rule and regulations
+                for different truck licences to help them get accustomed to such laws.</h4>
+            <br> <br>
+            <h5>You can select your truck type and your licence type to check what rules
+                and regulation you must know before driving you truck.</h5>            <br>
             <p class="sample-text">
                 <form method="post" action="/rules"> {% csrf_token %}  {{ form }}
                     <h6>Select your truck type please:</h6>
@@ -65,30 +68,30 @@
         </div>
         <br>
 
-        <!-- Spaecific Rules Listing  OLD -->
+        <!-- Specific Rules Listing  OLD -->
         {% if SpasficRules %}
             <div class="container box_1170">
                 <h1>Specific rules</h1>
                 <p class="normal-text">List of rules that are related to your selection of licence and truck types:</p>
+                <div class="row">
                 {% for oneSType in SpasficRules %}
-                    <!-- div class="card"-->
                         {{oneSType|safe}}
-                    <!--/div -->
                     <br>
                 {% endfor %}
+                </div>
             </div>
         {% endif %}
 
         <!-- General Rules Listing -->
         <div class="container box_1170">
             <h1>Generic rules</h1>
+            <div class="row">
             <p class="normal-text">List of rules that you MUST know before driving a heavy vehicle in general:</p>
             {% for oneRule in NormalRules %}
-                <!-- div class="card"-->
                     {{oneRule|safe}}
-                <!--/div -->
                 <br>
             {% endfor %}
+                </div>
         </div>
 
     </main>
