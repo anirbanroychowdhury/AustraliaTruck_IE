@@ -5,10 +5,6 @@
 let infoWindow;
 let locInfoWindow;
 let pos;
-//Go back to home
-function goToHome(){
-    window.location.href = '/home';
-}
 function initMap() {
     //Declare direction and render services
     const directionsService = new google.maps.DirectionsService();
@@ -18,6 +14,7 @@ function initMap() {
       mapTypeControl: false,
       zoom: 13,
     });
+    //get current location
     getCurrentLocation(map);
     //create a infowindow for locate me services
     infoWindow = new google.maps.InfoWindow();
@@ -29,29 +26,40 @@ function initMap() {
     directionsRenderer.setPanel(document.getElementById("right-panel"));
     //create the locate me button
     const locationButton = document.createElement("button");
-    const goBackButton = document.createElement("button");
     //Add text to the button
     locationButton.textContent = "Locate me";
-    goBackButton.textContent = "Go Back";
     //Add class
     locationButton.classList.add("custom-map-control-button");
-    goBackButton.classList.add("custom-map-control-button");
     //Push the button to the top left corner
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(goBackButton);
     //Set up listener
     const onLocationChangeHandler = function () {
         getCurrentLocation(map);
     }
     //Add listener
     locationButton.addEventListener("click",onLocationChangeHandler);
-    goBackButton.addEventListener("click",goToHome);
     //Add markers by loading geoJson
     map.data.loadGeoJson("../static/Rest_Area.geojson");
+    //set conditional styling
+    map.data.setStyle((feature)=>{
+        if (feature['i']['RESTAREATYPE'].includes('TRUCK')){
+            return {icon: {url: '/static/img/icon/bed.png'}}
+        }else if(feature['i']['RESTAREATYPE'].includes('WEIGHBRIDGE')){
+            return {icon: {url: '/static/img/icon/highway.png'}}
+        }else if(feature['i']['RESTAREATYPE'].includes('CARS ONLY')){
+            return {icon: {url: '/static/img/icon/car.png'}}
+        }else if(feature['i']['RESTAREATYPE'].includes('SERVICE CENTRE')){
+            return {icon: {url: '/static/img/icon/service.png'}}
+        }else if(feature['i']['RESTAREATYPE'].includes('AREA')){
+            return {icon: {url: '/static/img/icon/camping.png'}}
+        }
+        return {}
+    });
     //Listener to show info window on hover
     map.data.addListener('mouseover', function(event) {
         //taking required data
         restAreaName = event['feature']['i']['RESTAREANAME'];
+        restAreaType = event['feature']['i']['RESTAREATYPE'];
         roadName = event['feature']['i']['DECLAREDROADNAME'];
         localityName = event['feature']['i']['LOCALITY'];
         caravanAccess = event['feature']['i']['CARAVANACCESS'];
@@ -62,13 +70,14 @@ function initMap() {
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
        '<ol>'+
-       '<li>'+'<h5>'+'Rest Area:'+restAreaName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Road Name:'+roadName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Locality Name:'+localityName+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Caravan Access:'+caravanAccess+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Camping Access:'+campingAccess+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Parking Rating:'+parkingRating+'</h4>'+'</li>' +
-       '<li>'+'<h5>'+'Site Ameneties Rating:'+siteAmeneties+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Rest Area: '+restAreaName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Rest Area Type: '+restAreaType+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Road Name: '+roadName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Locality Name: '+localityName+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Caravan Access: '+caravanAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Camping Access: '+campingAccess+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Parking Rating: '+parkingRating+'</h4>'+'</li>' +
+       '<li>'+'<h5>'+'Site Ameneties Rating: '+siteAmeneties+'</h4>'+'</li>' +
        '</ol>'+
        '</div>'+
        '</div>';
