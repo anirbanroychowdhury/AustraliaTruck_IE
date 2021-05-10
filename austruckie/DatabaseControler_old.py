@@ -3,7 +3,7 @@
 #
 # Author: Ali Albahrani
 # Craated Date: 30 March 2021
-# Version: 2.0.0
+# Version: 1.3.0
 # ClassID# 1000
 
 # Class Usage
@@ -14,7 +14,7 @@
 # Database Paramters
 #   Add the database paramters in the func_ConnectToDB funcion.
 
-import pymysql as mysql
+import mysql.connector as mysql
 from austruckie.ErrorReporting import ausError as Err
 
 import os
@@ -28,9 +28,14 @@ def func_ConnectToDB():
     # Return: the db connection that can be used to call the other class function OR ErrorReporting object on error
     # mysql://b89f7ac9ae97e7:12576c53@us-cdbr-east-03.cleardb.com/heroku_2c359834c332ed6?reconnect=true
     try:
-        return mysql.connect(host='us-cdbr-east-03.cleardb.com', user='b89f7ac9ae97e7',password='12576c53', database='heroku_2c359834c332ed6')
+        mydb = mysql.connect(
+        host="us-cdbr-east-03.cleardb.com",
+        user="b89f7ac9ae97e7",
+        password="12576c53",
+        database="heroku_2c359834c332ed6"
+        )
+        return mydb
     except:
-        print("Conneciton error")
         return Err(1001, "Database Conneciton", "Problem in the connection to database parameters, Please, make sure you supply the correct database parameters and the SQL server is running.")
 
 # This function simply cut the connection to the database. please used it when you done.
@@ -73,10 +78,6 @@ def func_SendSQL(myDBin, SQLStatment:str, parameters={}, returnDate=True, return
     #        but the feild name
     #   -----------------------------------
 
-    if type(myDBin) is Err:
-        myDBin.func_PrintError()
-        return myDBin
-
     try:
         # Create a cursor that point to the record aimed to by sql
         mycursor = myDBin.cursor()
@@ -105,11 +106,11 @@ def func_SendSQL(myDBin, SQLStatment:str, parameters={}, returnDate=True, return
         else:
             # The SQL statment should not return any data, so for UPDATE, we need to commit the changes
             myDBin.commit()
-            print(db_OK_RESPOND)
             return db_OK_RESPOND
-    except:
+    except (mysql.Error, mysql.Warning) as e:
         # Return the error we got
         err = Err(1002, "Database return an error", "The SQL statment submited is not in the correct format or have some error in it. Please check your SQL.")
+        err.err_ExtraInfo = e
         return err
 
 # Use this funcion for INSERT sqls only. This funcion can process a single INSERT statement

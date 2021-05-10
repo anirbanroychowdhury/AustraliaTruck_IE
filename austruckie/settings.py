@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,27 +76,23 @@ WSGI_APPLICATION = 'austruckie.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'heroku_3f45b23dc1721a2',
-#         'USER': 'b9152b69c8a0db',
-#         'PASSWORD': '9dfb648e',
-#         'HOST': 'eu-cdbr-west-01.cleardb.com',
-#         'PORT': '5432',
-#     }
-# }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+      'default': {
+          'ENGINE': 'django.db.backends.mysql',
+          'NAME': 'heroku_2c359834c332ed6',
+          'USER': 'b89f7ac9ae97e7',
+          'PASSWORD': '12576c53',
+          'HOST': 'us-cdbr-east-03.cleardb.com',
+          'PORT': '3306',
+      }
 }
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

@@ -4,7 +4,7 @@
 # Author: Anirban Roy Chowdhury
 # Craated Date: 30 March 2021
 # Version: 1.1.0
-# ClassID# 1000
+# ClassID# 3000
 
 # Class Usage
 #   1. helps return views for face Detection.
