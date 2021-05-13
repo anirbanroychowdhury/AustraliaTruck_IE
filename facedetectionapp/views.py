@@ -33,7 +33,7 @@ def stop_video_view(request, *args, **kwargs):
 			cameraList.pop(sessionID)
 		except Exception as e:
 			print(e)
-	print(cameraList)
+	print(f"after deletion list is {cameraList}")
 	return redirect('home')
 
 def index_view(request, *args, **kwargs):	
