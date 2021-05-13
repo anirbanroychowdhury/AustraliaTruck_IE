@@ -41,10 +41,10 @@ def video_feed(request, *args, **kwargs):
 	if request.method == 'POST':
 		sessionID = request.session.session_key
 		if sessionID in cameraList:
-			print("Gettting camera from list")
+# 			print("Gettting camera from list")
 			camera = cameraList[sessionID]
 		else:
-			print("creating camera and appending to dict from video_feed")
+# 			print("creating camera and appending to dict from video_feed")
 			camera = Camera(webopencv(),sessionID)
 			cameraList[sessionID] = camera
 		_format, _data = str(request.body).split(';base64,')
