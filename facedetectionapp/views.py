@@ -60,6 +60,7 @@ def video_feed(request, *args, **kwargs):
 		#Create dict for response
 		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
 		#Convert to Json and send response
+		print(cameraList)
 		return HttpResponse(json.dumps(res),content_type='application/json')
 
 
