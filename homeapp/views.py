@@ -17,6 +17,7 @@ from austruckie.ErrorReporting import ausError as Err
 # A var used to check if the user have the right to access the home page
 accessOK = False
 
+
 # By Ali Albahrani
 # Open the home page. This is called after the password check
 def home_view(request, *args, **kwargs):
@@ -36,6 +37,7 @@ def requestAccess(request):
     if request.method == 'POST':
         # The request type is POST, so check the paramters
         if request.POST['passIn'] == 'AustruckMA14':
+            # print(request.session.session_key)  
             # Password was correct, display the main page
             global accessOK
             accessOK = True

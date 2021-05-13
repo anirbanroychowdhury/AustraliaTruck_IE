@@ -10,7 +10,7 @@
 #   1. helps return views for face Detection.
 #	2. video_feed is a POST API which taken the images from the client side applies the opencv processing and then returns an JSON containing the utf-8 encoded image, and bool value of alarm
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from facedetectionapp.camera import *
 from facedetectionapp.process import *
@@ -24,6 +24,17 @@ from django.core.files.base import ContentFile
 
 # camera = Camera(webopencv())
 cameraList = {}
+
+def stop_video_view(request, *args, **kwargs):
+	sessionID = request.session.session_key
+	if sessionID in cameraList:
+		print(f"deleting session ID:{sessionID}")
+		try:
+			cameraList.pop(sessionID)
+		except Exception as e:
+			print(e)
+	print(cameraList)
+	return redirect('home')
 
 def index_view(request, *args, **kwargs):	
 	request.session.create()
@@ -41,13 +52,15 @@ def video_feed(request, *args, **kwargs):
 	#IF request is POST
 	if request.method == 'POST':
 		sessionID = request.session.session_key
+		if sessionID not in cameraList:
+			return redirect('home')
 		if sessionID in cameraList:
 # 			print("Gettting camera from list")
 			camera = cameraList[sessionID]
-		else:
-# 			print("creating camera and appending to dict from video_feed")
-			camera = Camera(webopencv(),sessionID)
-			cameraList[sessionID] = camera
+# 		else:
+# # 			print("creating camera and appending to dict from video_feed")
+# 			camera = Camera(webopencv(),sessionID)
+# 			cameraList[sessionID] = camera
 		_format, _data = str(request.body).split(';base64,')
 		#Convert the string into an image
 		file = ContentFile( base64.b64decode(_data))
@@ -60,6 +73,7 @@ def video_feed(request, *args, **kwargs):
 		#Create dict for response
 		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
 		#Convert to Json and send response
+		print(cameraList)
 		return HttpResponse(json.dumps(res),content_type='application/json')
 
 
