@@ -25,7 +25,7 @@ def get_top_lip_center(landmarks):
         top_lip_pts.append(landmarks[i])
     top_lip_all_pts = np.squeeze(np.asarray(top_lip_pts))
     top_lip_mean = np.mean(top_lip_pts, axis=0)
-    print("top lip: %s",top_lip_mean[1])
+#     print("top lip: %s",top_lip_mean[1])
     return int(top_lip_mean[1])
 
 def get_bottom_lip_center(landmarks):
@@ -36,7 +36,7 @@ def get_bottom_lip_center(landmarks):
         bottom_lip_pts.append(landmarks[i])
     bottom_lip_all_pts = np.squeeze(np.asarray(bottom_lip_pts))
     bottom_lip_mean = np.mean(bottom_lip_pts, axis=0)
-    print("bottom lip: %s",bottom_lip_mean[1])
+#     print("bottom lip: %s",bottom_lip_mean[1])
     return int(bottom_lip_mean[1])
 
 #Convert to np array
@@ -116,7 +116,7 @@ class webopencv(object):
             bottomLipCenter = get_bottom_lip_center(shape)
             #calculate lip distance between top and bottom
             lipDistance = abs(topLipCenter-bottomLipCenter)
-            print("Lip distance is",lipDistance)
+#             print("Lip distance is",lipDistance)
             #Get avg eye aspect ratio
             avgEAR = float((leftEAR+rightEAR)/2.0)
             #compute convex hull
