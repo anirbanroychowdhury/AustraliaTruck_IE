@@ -45,12 +45,13 @@ class Camera(object):
 
     #Add an image to the queue
     def enqueue_input(self, input):
+        self.to_process.append(input)
         if(len(self.to_process)>100):
             self.to_process = []
             self.to_output = []
             self.to_alarm = []
             print("Emptying all queues")
-        self.to_process.append(input)
+        
 
     #Get the image to be displayed if the queue is not empty
     def get_frame(self):
