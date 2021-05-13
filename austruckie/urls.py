@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from facedetectionapp.views import index_view, video_feed
+from facedetectionapp.views import index_view, video_feed, stop_video_view
 from homeapp.views import home_view, requestAccess, passwordasking, check_list, about_us, rules
 from mapapp.views import map_view
 
@@ -31,5 +31,6 @@ urlpatterns = [
     path('aboutus', about_us, name = 'aboutus'),
     path('rules', rules, name = 'rules'),
     path('access', requestAccess, name='access'),
-    path('map',map_view, name='mapview')
+    path('map',map_view, name='mapview'),
+    path('stopvideo',stop_video_view,name='stopvideosession')
 ]

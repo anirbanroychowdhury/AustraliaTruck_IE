@@ -17,6 +17,7 @@ from austruckie.ErrorReporting import ausError as Err
 # A var used to check if the user have the right to access the home page
 accessOK = False
 
+
 # By Ali Albahrani
 # Open the home page. This is called after the password check
 def home_view(request, *args, **kwargs):
