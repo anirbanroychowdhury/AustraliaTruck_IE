@@ -25,12 +25,13 @@ from django.core.files.base import ContentFile
 # camera = Camera(webopencv())
 cameraList = {}
 
-def index_view(request, *args, **kwargs):
+def index_view(request, *args, **kwargs):	
 	request.session.create()
 	sessionID = request.session.session_key
 	if sessionID not in cameraList:
 		camera = Camera(webopencv(),sessionID)
 		cameraList[sessionID] = camera
+	print(cameraList)
 	return render(request,'faceDetect.html',{})
 
 
