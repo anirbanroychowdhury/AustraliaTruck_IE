@@ -13,7 +13,7 @@ function initMap() {
     //create a map centred on melbourne
     const map = new google.maps.Map(document.getElementById("map"), {
       mapTypeControl: false,
-      zoom: 13,
+      zoom: 10,
     });
     //get current location
     getCurrentLocation(map);
