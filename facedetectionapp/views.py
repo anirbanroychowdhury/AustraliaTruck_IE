@@ -10,8 +10,7 @@
 #   1. helps return views for face Detection.
 #	2. video_feed is a POST API which taken the images from the client side applies the opencv processing and then returns an JSON containing the utf-8 encoded image, and bool value of alarm
 
-from homeapp.views import home_view
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from facedetectionapp.camera import *
 from facedetectionapp.process import *
@@ -29,11 +28,16 @@ cameraList = {}
 def stop_video_view(request, *args, **kwargs):
 	sessionID = request.session.session_key
 	if sessionID in cameraList:
-		del cameraList[sessionID]
-	return render(request,'home.html',{})
+		print(f"deleting session ID:{sessionID}")
+		try:
+			cameraList.pop(sessionID)
+		except Exception as e:
+			print(e)
+	print(cameraList)
+	return redirect('home')
 
 def index_view(request, *args, **kwargs):	
-	# request.session.create()
+	request.session.create()
 	sessionID = request.session.session_key
 	if sessionID not in cameraList:
 		camera = Camera(webopencv(),sessionID)
@@ -49,7 +53,7 @@ def video_feed(request, *args, **kwargs):
 	if request.method == 'POST':
 		sessionID = request.session.session_key
 		if sessionID not in cameraList:
-			return redirect('access')
+			return redirect('home')
 		if sessionID in cameraList:
 # 			print("Gettting camera from list")
 			camera = cameraList[sessionID]
