@@ -52,8 +52,6 @@ def video_feed(request, *args, **kwargs):
 	#IF request is POST
 	if request.method == 'POST':
 		sessionID = request.session.session_key
-		if sessionID not in cameraList:
-			return redirect('home')
 		if sessionID in cameraList:
 			print("Gettting camera from list")
 			camera = cameraList[sessionID]
