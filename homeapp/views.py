@@ -36,6 +36,8 @@ def requestAccess(request):
     if request.method == 'POST':
         # The request type is POST, so check the paramters
         if request.POST['passIn'] == 'AustruckMA14':
+            request.session.create()
+            # print(request.session.session_key)  
             # Password was correct, display the main page
             global accessOK
             accessOK = True
