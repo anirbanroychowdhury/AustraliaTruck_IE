@@ -42,7 +42,7 @@ def index_view(request, *args, **kwargs):
 	if sessionID not in cameraList:
 		camera = Camera(webopencv(),sessionID)
 		cameraList[sessionID] = camera
-	print(cameraList)
+	# print(cameraList)
 	return render(request,'faceDetect.html',{})
 
 
@@ -53,10 +53,10 @@ def video_feed(request, *args, **kwargs):
 	if request.method == 'POST':
 		sessionID = request.session.session_key
 		if sessionID in cameraList:
-			print("Gettting camera from list")
+			# print("Gettting camera from list")
 			camera = cameraList[sessionID]
 		else:
-			print("creating camera and appending to dict from video_feed")
+			# print("creating camera and appending to dict from video_feed")
 			camera = Camera(webopencv(),sessionID)
 			cameraList[sessionID] = camera
 		_format, _data = str(request.body).split(';base64,')
@@ -71,7 +71,7 @@ def video_feed(request, *args, **kwargs):
 		#Create dict for response
 		res = {'camera_frame':processedResult[0],'alarm':processedResult[1]}
 		#Convert to Json and send response
-		print(cameraList)
+		# print(cameraList)
 		return HttpResponse(json.dumps(res),content_type='application/json')
 
 
