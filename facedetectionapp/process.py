@@ -73,8 +73,8 @@ class webopencv(object):
         # blink and then a second constant for the number of consecutive
         # frames the eye must be below the threshold for to set off the
         # alarm
-        self.EYE_AR_THRESH = 0.25
-        self.EYE_AR_CONSEC_FRAMES = 28
+        self.EYE_AR_THRESH = 0.36
+        self.EYE_AR_CONSEC_FRAMES = 10
         # initialize the frame counter as well as a boolean used to
         # indicate if the alarm is going off
         self.COUNTER = 0
@@ -131,6 +131,7 @@ class webopencv(object):
             if lipDistance > 25:
                 self.YAWN_COUNT += 1
             if avgEAR < self.EYE_AR_THRESH:
+                print(f'counter inside threshold{self.COUNTER}')
                 self.EYE_BLINK_COUNT += 1
                 self.COUNTER += 1
                 if self.COUNTER >= self.EYE_AR_CONSEC_FRAMES:
