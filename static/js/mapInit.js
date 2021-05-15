@@ -5,6 +5,14 @@
 let infoWindow;
 let locInfoWindow;
 let pos;
+
+function checkForNullAndReturnString(paramString){
+    if(paramString != null){
+        return paramString.toLowerCase();
+    }else{
+        return 'none';
+    }
+}
 function initMap() {
     window.alert("Each icon indicates a certain location such as rest stop, camping grounds etc. Click on the icon to get turn by turn directions to the place.");
     //Declare direction and render services
@@ -59,14 +67,14 @@ function initMap() {
     //Listener to show info window on hover
     map.data.addListener('mouseover', function(event) {
         //taking required data
-        restAreaName = event['feature']['i']['RESTAREANAME'].toLowerCase();
-        restAreaType = event['feature']['i']['RESTAREATYPE'].toLowerCase();
-        roadName = event['feature']['i']['DECLAREDROADNAME'].toLowerCase();
-        localityName = event['feature']['i']['LOCALITY'].toLowerCase();
-        caravanAccess = event['feature']['i']['CARAVANACCESS'].toLowerCase();
-        campingAccess = event['feature']['i']['CAMPING'].toLowerCase();
-        parkingRating = event['feature']['i']['DELINEATEDPARKING'].toLowerCase();
-        siteAmeneties = event['feature']['i']['SITEAMENITY'].toLowerCase();
+        restAreaName = checkForNullAndReturnString(event['feature']['i']['RESTAREANAME']);
+        restAreaType = checkForNullAndReturnString(event['feature']['i']['RESTAREATYPE']);
+        roadName = checkForNullAndReturnString(event['feature']['i']['DECLAREDROADNAME']);
+        localityName = checkForNullAndReturnString(event['feature']['i']['LOCALITY']);
+        caravanAccess = checkForNullAndReturnString(event['feature']['i']['CARAVANACCESS']);
+        campingAccess = checkForNullAndReturnString(event['feature']['i']['CAMPING']);
+        parkingRating = checkForNullAndReturnString(event['feature']['i']['DELINEATEDPARKING']);
+        siteAmeneties = checkForNullAndReturnString(event['feature']['i']['SITEAMENITY']);
         //creating string to display required data
         const contentString = '<div id="content">'+
        ' <div id = "bodyContent">'+
