@@ -15,7 +15,7 @@ from austruckie.ErrorReporting import ausError as Err
 
 # By Ali Albahrani
 # A var used to check if the user have the right to access the home page
-accessOK = False
+accessOK = True
 
 
 # By Ali Albahrani
@@ -29,7 +29,8 @@ def home_view(request, *args, **kwargs):
 # By Ali Albahrani
 # This is to render the access page html form the Templete
 def passwordasking(request):
-    return render(request, "AccessPage.html", {})
+    #return render(request, "AccessPage.html", {})
+    return render(request, "home.html", {})
 
 # By Ali Albahrani
 # This is a POST handler method that accept the password as parameter and check it
